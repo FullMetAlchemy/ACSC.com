@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="https://unpkg.com/qrcode-generator@1.4.4/qrcode.js" integrity="sha384-8FWZA6BGMXhsfO+BLtrJK0We6gg5o1JyO8xQm6peWDEUs17ACA5ziE/NIAkl9z2k" crossorigin="anonymous"></script>
 </head>
 <body>
 <x-dc>
-<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>html,body{margin:0;height:100%;background:#FAF7F0;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#2E7D52}a:hover{color:#256B45}@keyframes skel{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}@keyframes rowin{0%{background:#E3F2E8}100%{background:#ffffff}}@keyframes toastin{0%{transform:translateY(8px);opacity:0}100%{transform:translateY(0);opacity:1}}@keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}@media print{[data-print-hide]{display:none !important}html,body{background:#ffffff !important}[data-receipt-sheet]{box-shadow:none !important;border:none !important;margin:0 !important;width:100% !important}}button{font-family:inherit;border:none;background:none;padding:0;cursor:pointer;text-align:left}:focus-visible{outline:2px solid #2E7D52;outline-offset:2px}.p-sidebar{display:flex}.p-bottomnav{display:none}@media (max-width:860px){.p-sidebar{display:none !important}.p-bottomnav{display:flex !important}.p-main{padding-bottom:70px !important}}</style>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>html,body{margin:0;height:100%;background:#FAF7F0;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#2E7D52}a:hover{color:#256B45}@keyframes skel{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}@keyframes rowin{0%{background:#E3F2E8}100%{background:#ffffff}}@keyframes toastin{0%{transform:translateY(8px);opacity:0}100%{transform:translateY(0);opacity:1}}@keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}@media print{[data-print-hide]{display:none !important}html,body{background:#ffffff !important}[data-receipt-sheet]{box-shadow:none !important;border:none !important;margin:0 !important;width:100% !important}}button{font-family:inherit;border:none;background:none;padding:0;cursor:pointer;text-align:left}:focus-visible{outline:2px solid #2E7D52;outline-offset:2px}.p-sidebar{display:flex}.p-bottomnav{display:none}@media (max-width:860px){.p-sidebar{display:none !important}.p-bottomnav{display:flex !important}.p-main{padding-bottom:70px !important}.landing-shell{flex-direction:column !important}.landing-visual{width:100% !important;padding:28px 20px !important}.landing-decor{display:none !important}.landing-form{padding:24px 16px !important}.staff-shell{min-width:0 !important}.staff-sidebar{position:fixed !important;top:0;left:0;bottom:0;z-index:200;width:240px !important;box-shadow:4px 0 24px rgba(0,0,0,.22)}.staff-menu-btn{display:flex !important}.staff-topbar-search{display:none !important}.staff-shell [style*="display: flex; gap:"]{flex-wrap:wrap !important}}</style>
 <template id="__bundler_thumbnail" data-bg-color="#234D3A">
 <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
 <rect width="1200" height="800" fill="#234D3A"></rect>
@@ -31,8 +32,8 @@
 <div style="height:100vh;width:100%;overflow:auto;position:relative">
 
 <sc-if value="{{showSignIn}}" hint-placeholder-val="{{true}}">
-<div style="min-height:100vh;width:100%;display:flex;align-items:stretch;background:#FAF7F0">
-<div style="width:46%;flex:none;background:#234D3A;padding:48px 52px;display:flex;flex-direction:column">
+<div class="landing-shell" style="min-height:100vh;width:100%;display:flex;align-items:stretch;background:#FAF7F0">
+<div class="landing-visual" style="width:46%;flex:none;background:#234D3A;padding:48px 52px;display:flex;flex-direction:column">
 <div style="display:flex;align-items:center;gap:12px">
 <img src="assets/abia-state-crest.jpg" alt="Abia State Government crest" style="width:44px;height:44px;flex:none;border-radius:8px;object-fit:contain;background:#fff;padding:3px">
 <div style="display:flex;flex-direction:column;gap:6px">
@@ -42,7 +43,7 @@
 </div>
 <div style="margin-top:auto;display:flex;flex-direction:column;gap:18px">
 
-<div aria-hidden="true" style="pointer-events:none;user-select:none;max-width:520px;background:rgba(255,255,255,.05);border:1px solid rgba(143,197,168,.28);border-radius:12px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:12px">
+<div aria-hidden="true" class="landing-decor" style="pointer-events:none;user-select:none;max-width:520px;background:rgba(255,255,255,.05);border:1px solid rgba(143,197,168,.28);border-radius:12px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 12.5px 'IBM Plex Sans',sans-serif;color:#fff">Site master plan</span><span style="margin-left:auto;font:400 10px 'IBM Plex Mono',monospace;color:#7fae94;letter-spacing:.06em">PHASE 1 · 15,570 UNITS</span></div>
 
 <div style="background:#07301e;border:1px solid rgba(143,197,168,.2);border-radius:9px;padding:13px;display:flex;flex-direction:column;gap:7px">
@@ -89,10 +90,10 @@
 <div style="font:400 19px/1.55 'IBM Plex Sans',sans-serif;color:#d9e8e0;max-width:430px">Payment referencing, identification, reconciliation and reporting around the Trustee-controlled Collection Account.</div>
 <div style="padding:14px 16px;border:1px solid rgba(143,197,168,.4);border-left:3px solid #E8B23D;background:rgba(255,255,255,.05);max-width:460px"><div style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:#bfdcce">Receipts settle directly into the Trustee-controlled Collection Account. ACSC Collect does not hold, pool or redirect funds.</div></div>
 </div>
-<div style="margin-top:44px;display:flex;align-items:center;gap:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14)"><span style="font:600 12px 'IBM Plex Sans',sans-serif;color:#fff;letter-spacing:.04em">FOURCORE INTEGRATED SERVICES</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#7fae94">Platform operator</span><span style="margin-left:auto;font:400 11.5px 'IBM Plex Mono',monospace;color:#7fae94">v0.9 MVP</span></div>
+<div style="margin-top:44px;display:flex;align-items:center;gap:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14)"><span style="font:600 12px 'IBM Plex Sans',sans-serif;color:#fff;letter-spacing:.04em">ACSC PLATFORM</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#7fae94">Platform operator</span></div>
 </div>
-<div style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px;overflow:auto">
-<div style="width:430px;flex:none;margin:auto 0;display:flex;flex-direction:column;gap:16px">
+<div class="landing-form" style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px;overflow:auto">
+<div style="width:100%;max-width:430px;flex:none;margin:auto 0;display:flex;flex-direction:column;gap:16px">
 
 <div style="display:flex;justify-content:flex-end"><button onClick="{{toggleStaffSignIn}}" style="font:500 12px 'IBM Plex Sans',sans-serif;color:#6b7c73;cursor:pointer">{{staffToggleLabel}}</button></div>
 
@@ -109,9 +110,9 @@
 <sc-if value="{{pAuthProviderActive}}" hint-placeholder-val="{{false}}"><div style="display:flex;align-items:center;gap:7px;padding:8px 11px;background:#EFF6F1;border:1px solid #CFE3D5;border-radius:7px"><span style="font:500 12px 'IBM Plex Sans',sans-serif;color:#2f5e48">Signing in with {{pAuthProviderArticle}} {{pAuthProviderLabel}} address</span><button onClick="{{pAuthClearProvider}}" style="margin-left:auto;font:500 11.5px 'IBM Plex Sans',sans-serif;color:#2E7D52;text-decoration:underline;cursor:pointer">Use any email</button></div></sc-if>
 </div>
 <div style="display:flex;align-items:center;gap:10px"><div style="flex:1;height:1px;background:#dfe5e2"></div><span style="font:500 11px 'IBM Plex Sans',sans-serif;color:#8b9a92">OR</span><div style="flex:1;height:1px;background:#dfe5e2"></div></div>
-<div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Email address</span><input value="{{pAuthEmail}}" onChange="{{onPAuthEmail}}" inputMode="email" placeholder="{{pAuthEmailPlaceholder}}" style="height:44px;border:1px solid #c9d3cd;border-radius:7px;padding:0 12px;font:400 14px 'IBM Plex Sans',sans-serif;color:#12201a;background:#fff"/></div>
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Email address</span><div style="position:relative"><input value="{{pAuthEmail}}" onChange="{{onPAuthEmail}}" inputMode="email" placeholder="{{pAuthEmailPlaceholder}}" style="width:100%;height:44px;border:{{pAuthEmailBorder}};border-radius:7px;padding:0 36px 0 12px;font:400 14px 'IBM Plex Sans',sans-serif;color:#12201a;background:#fff"/><sc-if value="{{pAuthEmailShowCheck}}" hint-placeholder-val="{{false}}"><span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font:700 15px 'IBM Plex Sans',sans-serif;color:#2F8557">✓</span></sc-if></div><sc-if value="{{pAuthEmailShowError}}" hint-placeholder-val="{{false}}"><span style="font:500 12px 'IBM Plex Sans',sans-serif;color:#C1443A">Enter a valid email address</span></sc-if></div>
 <div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Password</span><input type="password" value="{{pAuthPassword}}" onChange="{{onPAuthPassword}}" placeholder="••••••••" style="height:44px;border:1px solid #c9d3cd;border-radius:7px;padding:0 12px;font:400 14px 'IBM Plex Sans',sans-serif;color:#12201a;background:#fff"/></div>
-<button onClick="{{pAuthContinue}}" style="height:44px;background:#2E7D52;border-radius:7px;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Continue</button>
+<button onClick="{{pAuthContinue}}" style="height:44px;background:{{pAuthContinueBg}};border-radius:7px;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Continue</button>
 </sc-if>
 
 <sc-if value="{{pAuthPhaseOtp}}" hint-placeholder-val="{{false}}">
@@ -133,7 +134,7 @@
 <sc-if value="{{signInStep1}}" hint-placeholder-val="{{true}}">
 <div style="background:#fff;border:1px solid #dfe5e2;border-radius:10px;padding:26px 24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(11,61,38,.06)">
 <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 17px 'IBM Plex Sans',sans-serif;color:#12201a">Staff sign in</span><span style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5b6b63">Any username and password are accepted in this prototype.</span></div>
-<div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Username or email</span><input value="{{signInUser}}" onChange="{{onUser}}" placeholder="name@fourcore.ng" style="height:40px;border:1px solid #c9d3cd;border-radius:7px;padding:0 11px;font:400 13.5px 'IBM Plex Sans',sans-serif;color:#12201a;background:#fff"/></div>
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Username or email</span><input value="{{signInUser}}" onChange="{{onUser}}" placeholder="name@acsc.ng" style="height:40px;border:1px solid #c9d3cd;border-radius:7px;padding:0 11px;font:400 13.5px 'IBM Plex Sans',sans-serif;color:#12201a;background:#fff"/></div>
 <div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Password</span><input type="password" value="{{signInPass}}" onChange="{{onPass}}" placeholder="••••••••" style="height:40px;border:1px solid #c9d3cd;border-radius:7px;padding:0 11px;font:400 13.5px 'IBM Plex Sans',sans-serif;color:#12201a;background:#fff"/></div>
 <button onClick="{{toOtp}}" style="height:44px;background:#2E7D52;border-radius:7px;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Continue</button>
 <div style="display:flex;gap:10px;padding:12px 14px;background:#FDF3E2;border:1px solid #F2DDB0;border-radius:8px"><div style="width:4px;border-radius:2px;background:#D9922E;flex:none"></div><span style="font:400 12px/1.55 'IBM Plex Sans',sans-serif;color:#8A5A1E">Authorised users only. All activity — including sign-in attempts, reference generation and approvals — is logged to the immutable audit trail and visible to the Trustee.</span></div>
@@ -230,7 +231,13 @@
 <div style="width:100%;max-width:560px;display:flex;flex-direction:column;gap:15px">
 <div style="display:flex;flex-direction:column;gap:5px"><span style="font:600 21px 'IBM Plex Sans',sans-serif;color:#12201a;letter-spacing:-0.01em">Invoice Details</span><span style="font:400 13.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">The Central Billing System has issued an immutable invoice for this administrative fee. Complete payment into the designated Trustee Collection Account to settle it.</span></div>
 <div style="background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:14px">
-<div style="display:flex;align-items:baseline;gap:9px;padding-bottom:13px;border-bottom:1px solid #eef1ef"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">Invoice {{eInvoiceRef}} · issued {{eInvoiceDate}}</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">{{eFeeBreakdown}}</span></div><span style="margin-left:auto;font:600 26px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{eFeeText}}</span></div>
+<div style="display:flex;flex-direction:column;gap:1px;padding-bottom:2px"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">Invoice {{eInvoiceRef}} · issued {{eInvoiceDate}}</span></div>
+<div style="display:flex;flex-direction:column;border-bottom:1px solid #eef1ef;padding-bottom:10px">
+<sc-for list="{{eInvoiceLines}}" as="il" hint-placeholder-count="2">
+<div style="display:flex;align-items:baseline;gap:9px;padding:7px 0"><div style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{il.label}}</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">{{il.qty}} × {{il.unit}}</span></div><span style="margin-left:auto;font:600 15px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{il.amount}}</span></div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:baseline;gap:9px;padding-bottom:3px"><span style="font:600 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">Total</span><span style="margin-left:auto;font:600 26px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{eFeeText}}</span></div>
 <div style="display:flex;flex-direction:column;gap:2px;padding:13px 15px;background:#f7f9f8;border:1px solid #eef1ef;border-radius:9px"><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">PAY INTO · CORONATION TRUSTEES COLLECTION ACCOUNT</span><span style="font:600 20px 'IBM Plex Mono',monospace;color:#12201a;letter-spacing:.04em">{{eInvoiceVirtual}}</span><span style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#5b6b63">Trustee-controlled escrow account · your account identifies the payment automatically</span></div>
 <div style="display:flex;gap:10px;flex-wrap:wrap"><button onClick="{{eConfirmPayment}}" style="flex:1;min-width:210px;min-height:52px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;font:600 15px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">{{ePayLabel}}</button></div>
 <sc-if value="{{eProcessing}}" hint-placeholder-val="{{false}}"><div style="display:flex;align-items:center;gap:10px"><div style="width:18px;height:18px;flex:none;border-radius:50%;border:2.5px solid #CFE3D5;border-top-color:#2E7D52;animation:spin .8s linear infinite"></div><span style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:#5b6b63">Matching your payment against the Trustee Collection Account…</span></div></sc-if>
@@ -362,11 +369,11 @@
 <div style="background:#fff;border:2px solid #2E7D52;border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:14px;animation:reveal .18s ease-out">
 <div style="display:flex;align-items:center;gap:9px"><span style="font:600 12px 'IBM Plex Mono',monospace;color:#2E7D52">STEP 4 OF 4</span><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a;margin-left:6px">Review your interest</span></div>
 <div style="display:flex;flex-direction:column;gap:2px">
-<div style="display:flex;align-items:center;gap:8px;padding-bottom:8px"><span title="Identity verified via official registry" style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#8b9a92">🔒 Identity verified via official registry</span><button onClick="{{toggleIdentityReveal}}" style="margin-left:auto;height:30px;padding:0 11px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 11.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">{{eIdRevealLabel}}</button></div>
+<div style="display:flex;align-items:center;gap:8px;padding-bottom:8px"><span title="Identity verified via official registry" style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#8b9a92">🔒 Identity verified via official registry</span></div>
 <sc-for list="{{eReviewRows}}" as="r" hint-placeholder-count="6">
 <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #eef1ef">
 <span style="width:{{eReviewLabelW}};flex:none;font:400 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">{{r.label}}</span>
-<span style="flex:1;min-width:0;font:500 14px 'IBM Plex Sans',sans-serif;color:#12201a;filter:{{r.blurFilter}};transition:filter .15s">{{r.value}}</span>
+<span style="flex:1;min-width:0;font:500 14px 'IBM Plex Sans',sans-serif;color:#12201a">{{r.value}}</span>
 <sc-if value="{{r.editable}}" hint-placeholder-val="{{true}}"><button onClick="{{r.edit}}" style="flex:none;height:32px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;font:500 12.5px 'IBM Plex Sans',sans-serif;color:#2E7D52;background:#fff;cursor:pointer">Edit</button></sc-if>
 </div>
 </sc-for>
@@ -408,6 +415,18 @@
 </div>
 <sc-if value="{{eoiToastOn}}" hint-placeholder-val="{{false}}">
 <div style="position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:60;background:#12201a;border-radius:9px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 28px rgba(11,61,38,.3)"><div style="width:7px;height:7px;border-radius:50%;background:#E8B23D"></div><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#fff">{{eoiToastText}}</span></div>
+</sc-if>
+<sc-if value="{{supportModalOpen}}" hint-placeholder-val="{{false}}">
+<div role="dialog" aria-modal="true" aria-labelledby="support-modal-title" style="position:fixed;inset:0;z-index:9999;background:rgba(18,32,26,.62);display:flex;align-items:center;justify-content:center;padding:20px">
+<button onClick="{{closeSupportModal}}" aria-label="Close" style="position:absolute;inset:0;cursor:default"></button>
+<div style="width:100%;max-width:420px;position:relative;background:#fff;border-radius:14px;padding:24px 24px 22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+<div style="display:flex;align-items:center;gap:10px"><span id="support-modal-title" style="font:600 17px 'IBM Plex Sans',sans-serif;color:#12201a">Contact ACSC support</span><button onClick="{{closeSupportModal}}" aria-label="Close" style="margin-left:auto;font:400 17px;color:#8b9a92;cursor:pointer">✕</button></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">TOLL-FREE HELPLINE</span><a href="tel:080022724357" style="font:600 18px 'IBM Plex Mono',monospace;color:#2E7D52;text-decoration:none">0800 ACSC HELP (0800 2272 4357)</a></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">OPERATING HOURS</span><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">Mon–Sat, 08:00–18:00 WAT</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">PHYSICAL SUPPORT DESKS</span><span style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#3d4b44">On-ground registration desks available at Ariaria, Ekeoha, and Cemetery markets in Aba.</span></div>
+<div style="display:flex;gap:10px"><a href="tel:080022724357" style="flex:1;min-height:46px;background:#2E7D52;border-radius:9px;display:flex;align-items:center;justify-content:center;font:600 13.5px 'IBM Plex Sans',sans-serif;color:#fff;text-decoration:none;cursor:pointer">Call now</a><button onClick="{{copySupportPhone}}" style="flex:1;min-height:46px;border:1px solid #c9d3cd;border-radius:9px;display:flex;align-items:center;justify-content:center;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">{{copySupportLabel}}</button></div>
+</div>
+</div>
 </sc-if>
 </div>
 </sc-if>
@@ -496,6 +515,19 @@
 <div style="display:flex;flex-direction:column">
 <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><div style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">EOI Invoice</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">{{pInvoice}}</span></div><button onClick="{{receiptOpen}}" style="margin-left:auto;height:32px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#2E7D52;cursor:pointer">Download</button></div>
 <div style="display:flex;align-items:center;gap:12px;padding:10px 0"><div style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">EOI Payment Receipt</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">Settled {{pPaidAt}}</span></div><button onClick="{{receiptOpen}}" style="margin-left:auto;height:32px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#2E7D52;cursor:pointer">Download</button></div>
+</div>
+</div>
+<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:stretch">
+<div style="flex:1.6;min-width:280px;background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:19px 21px;display:flex;flex-direction:column;gap:13px">
+<span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">What happens next?</span>
+<sc-for list="{{eNextSteps}}" as="n" hint-placeholder-count="5"><div style="display:flex;gap:11px;align-items:flex-start"><div style="width:22px;height:22px;flex:none;border-radius:50%;background:{{n.bg}};color:{{n.color}};display:flex;align-items:center;justify-content:center;font:600 11px 'IBM Plex Mono',monospace">{{n.n}}</div><div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{n.title}}</span><span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#5b6b63">{{n.body}}</span></div></div></sc-for>
+</div>
+<div style="flex:1;min-width:220px;background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:19px 21px;display:flex;flex-direction:column;justify-content:space-between;gap:13px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">Need help?</span>
+<span style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">A field agent can complete this form with you at any registration desk, or call the support line.</span>
+</div>
+<button onClick="{{eHelp}}" style="min-height:44px;border:1px solid #c9d3cd;border-radius:9px;display:flex;align-items:center;justify-content:center;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">Talk to support</button>
 </div>
 </div>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -858,6 +890,19 @@
 </sc-for>
 </div>
 
+<sc-if value="{{supportModalOpen}}" hint-placeholder-val="{{false}}">
+<div role="dialog" aria-modal="true" aria-labelledby="support-modal-title-2" style="position:fixed;inset:0;z-index:9999;background:rgba(18,32,26,.62);display:flex;align-items:center;justify-content:center;padding:20px">
+<button onClick="{{closeSupportModal}}" aria-label="Close" style="position:absolute;inset:0;cursor:default"></button>
+<div style="width:100%;max-width:420px;position:relative;background:#fff;border-radius:14px;padding:24px 24px 22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+<div style="display:flex;align-items:center;gap:10px"><span id="support-modal-title-2" style="font:600 17px 'IBM Plex Sans',sans-serif;color:#12201a">Contact ACSC support</span><button onClick="{{closeSupportModal}}" aria-label="Close" style="margin-left:auto;font:400 17px;color:#8b9a92;cursor:pointer">✕</button></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">TOLL-FREE HELPLINE</span><a href="tel:080022724357" style="font:600 18px 'IBM Plex Mono',monospace;color:#2E7D52;text-decoration:none">0800 ACSC HELP (0800 2272 4357)</a></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">OPERATING HOURS</span><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">Mon–Sat, 08:00–18:00 WAT</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">PHYSICAL SUPPORT DESKS</span><span style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#3d4b44">On-ground registration desks available at Ariaria, Ekeoha, and Cemetery markets in Aba.</span></div>
+<div style="display:flex;gap:10px"><a href="tel:080022724357" style="flex:1;min-height:46px;background:#2E7D52;border-radius:9px;display:flex;align-items:center;justify-content:center;font:600 13.5px 'IBM Plex Sans',sans-serif;color:#fff;text-decoration:none;cursor:pointer">Call now</a><button onClick="{{copySupportPhone}}" style="flex:1;min-height:46px;border:1px solid #c9d3cd;border-radius:9px;display:flex;align-items:center;justify-content:center;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">{{copySupportLabel}}</button></div>
+</div>
+</div>
+</sc-if>
+
 </div>
 </sc-if>
 
@@ -869,16 +914,17 @@
 <button onClick="{{receiptPrint}}" style="margin-left:auto;height:32px;padding:0 14px;background:#2E7D52;border-radius:7px;font:600 12.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Print / Save as PDF</button>
 </div>
 <div style="flex:1;display:flex;justify-content:center;padding:28px 20px 48px">
-<div data-receipt-sheet="true" style="width:794px;max-width:100%;background:#fff;border:1px solid #d5dcd8;box-shadow:0 6px 26px rgba(11,61,38,.14);display:flex;flex-direction:column">
+<div data-receipt-sheet="true" style="width:794px;max-width:100%;background:#fff;border:1px solid #d5dcd8;box-shadow:0 6px 26px rgba(11,61,38,.14);display:flex;flex-direction:column;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:5;-webkit-print-color-adjust:exact;print-color-adjust:exact"><div style="transform:rotate(-14deg);border:5px solid #B42318;border-radius:14px;padding:8px 30px;opacity:.16;display:flex;flex-direction:column;align-items:center;gap:2px;user-select:none"><span style="font:800 60px 'IBM Plex Sans',sans-serif;color:#B42318;letter-spacing:.06em;line-height:1;white-space:nowrap">PAID</span><span style="font:700 12.5px 'IBM Plex Mono',monospace;color:#B42318;letter-spacing:.26em;white-space:nowrap">VERIFIED SETTLEMENT</span></div></div>
 <div style="background:#234D3A;padding:26px 34px;display:flex;align-items:center;gap:14px">
 <img src="assets/abia-state-crest.jpg" alt="Abia State Government crest" style="width:40px;height:40px;flex:none;border-radius:9px;object-fit:contain;background:#fff;padding:3px">
 <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 17px 'IBM Plex Sans',sans-serif;color:#fff;letter-spacing:-0.01em">Aba Commercial Smart City</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8fc5a8;letter-spacing:.04em">OFFICIAL RECEIPT · EXPRESSION OF INTEREST ADMINISTRATIVE FEE</span></div>
 <div style="flex:none;display:flex;flex-direction:column;gap:2px;align-items:flex-end"><span style="font:400 10px 'IBM Plex Mono',monospace;color:#8fc5a8;letter-spacing:.08em">INVOICE ID</span><span style="font:600 15px 'IBM Plex Mono',monospace;color:#fff">{{rInvoice}}</span></div>
 </div>
 <div style="padding:28px 34px 32px;display:flex;flex-direction:column;gap:22px">
-<div style="display:flex;align-items:center;gap:12px;padding:15px 17px;background:#E3F2E8;border:1px solid #C9E3D2;border-left:3px solid #2F8557;border-radius:9px">
+<div style="display:flex;align-items:center;gap:12px;padding:15px 17px;background:#E3F2E8;border:1px solid #C9E3D2;border-left:3px solid #2F8557;border-radius:9px;flex-wrap:wrap">
 <div style="width:30px;height:30px;flex:none;border-radius:50%;background:#2F8557;color:#fff;display:flex;align-items:center;justify-content:center;font:600 15px 'IBM Plex Sans',sans-serif">✓</div>
-<div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font:600 15px 'IBM Plex Sans',sans-serif;color:#1F5E3E">Payment received in full</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#276b45">Settled {{rPaidAt}} · {{rChannel}}</span></div>
+<div style="flex:1;min-width:140px;display:flex;flex-direction:column;gap:1px"><span style="font:600 15px 'IBM Plex Sans',sans-serif;color:#1F5E3E">Payment received in full</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#276b45">Settled {{rPaidAt}} · {{rChannel}}</span></div>
 <span style="flex:none;font:600 24px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{rAmount}}</span>
 </div>
 
@@ -890,7 +936,6 @@
 <sc-if value="{{rHasBusiness}}" hint-placeholder-val="{{false}}"><span style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">{{rBusiness}}</span></sc-if>
 <span style="font:400 12px 'IBM Plex Mono',monospace;color:#5b6b63">{{rPhone}}</span>
 <span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{rEmail}}</span>
-<sc-if value="{{rHasIdentity}}" hint-placeholder-val="{{false}}"><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">Identity verified · {{rIdentityType}} {{rIdentityMasked}}</span></sc-if>
 </div>
 </div>
 <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:9px">
@@ -901,11 +946,20 @@
 <span style="font:500 13px 'IBM Plex Mono',monospace;color:#12201a;letter-spacing:.03em">{{rVirtual}}</span>
 </div>
 </div>
+<div style="flex:none;display:flex;flex-direction:column;gap:9px;align-items:flex-start;position:relative;z-index:7">
+<span style="font:600 10px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.1em">SCAN TO VERIFY</span>
+<svg viewBox="{{rQrViewBox}}" shape-rendering="crispEdges" style="width:96px;height:96px;flex:none;background:#fff;border:1px solid #eef1ef;border-radius:6px">
+<sc-for list="{{rQrCells}}" as="m" hint-placeholder-count="160"><rect x="{{m.x}}" y="{{m.y}}" width="1" height="1" fill="#12201a"/></sc-for>
+</svg>
+<span style="font:400 10px 'IBM Plex Mono',monospace;color:#9aa8a1;max-width:96px;line-height:1.4">Unique per invoice · scan to validate</span>
+</div>
 </div>
 
 <div style="border:1px solid #dfe5e2;border-radius:9px;overflow:hidden">
 <div style="background:#f7f9f8;padding:9px 16px;border-bottom:1px solid #dfe5e2;display:flex"><span style="flex:1;font:600 10px 'IBM Plex Mono',monospace;color:#5b6b63;letter-spacing:.08em">DESCRIPTION</span><span style="width:60px;flex:none;text-align:right;font:600 10px 'IBM Plex Mono',monospace;color:#5b6b63;letter-spacing:.08em">QTY</span><span style="width:110px;flex:none;text-align:right;font:600 10px 'IBM Plex Mono',monospace;color:#5b6b63;letter-spacing:.08em">UNIT FEE</span><span style="width:120px;flex:none;text-align:right;font:600 10px 'IBM Plex Mono',monospace;color:#5b6b63;letter-spacing:.08em">AMOUNT</span></div>
-<div style="padding:13px 16px;display:flex;align-items:flex-start;border-bottom:1px solid #f0f3f1"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">Expression of Interest — administrative fee</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{rCategory}} · {{rStream}}</span></div><span style="width:60px;flex:none;text-align:right;font:500 13.5px 'IBM Plex Mono',monospace;color:#12201a">{{rLineQty}}</span><span style="width:110px;flex:none;text-align:right;font:400 13px 'IBM Plex Mono',monospace;color:#3d4b44;font-variant-numeric:tabular-nums">{{rUnitFee}}</span><span style="width:120px;flex:none;text-align:right;font:500 13.5px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{rAmount}}</span></div>
+<sc-for list="{{rInvoiceLines}}" as="il" hint-placeholder-count="2">
+<div style="padding:13px 16px;display:flex;align-items:flex-start;border-bottom:1px solid #f0f3f1"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{il.label}}</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{il.desc}}</span></div><span style="width:60px;flex:none;text-align:right;font:500 13.5px 'IBM Plex Mono',monospace;color:#12201a">{{il.qty}}</span><span style="width:110px;flex:none;text-align:right;font:400 13px 'IBM Plex Mono',monospace;color:#3d4b44;font-variant-numeric:tabular-nums">{{il.unit}}</span><span style="width:120px;flex:none;text-align:right;font:500 13.5px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{il.amount}}</span></div>
+</sc-for>
 <div style="padding:12px 16px;display:flex;align-items:center;background:#fbfcfb"><span style="flex:1;font:600 13px 'IBM Plex Sans',sans-serif;color:#12201a">Total paid</span><span style="width:120px;flex:none;text-align:right;font:600 15px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{rAmount}}</span></div>
 </div>
 
@@ -922,10 +976,10 @@
 
 <div style="padding-top:18px;border-top:1px solid #eef1ef;display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap">
 <div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:4px">
-<span style="font:400 11px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">Funds settle directly into the Trustee-controlled Collection Account. FourCore Integrated Services and ACSC Collect do not hold, pool or redirect applicant funds. No agent is authorised to collect this fee on our behalf.</span>
+<span style="font:400 11px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">Funds settle directly into the Trustee-controlled Collection Account. ACSC Collect does not hold, pool or redirect applicant funds. No agent is authorised to collect this fee on our behalf.</span>
 <span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#9aa8a1">Issued electronically by ACSC Collect · no signature required · verify at acsc.ng/verify using {{rInvoice}}</span>
 </div>
-<div style="flex:none;display:flex;flex-direction:column;gap:3px;align-items:flex-end"><span style="font:600 11px 'IBM Plex Sans',sans-serif;color:#12201a;letter-spacing:.04em">FOURCORE INTEGRATED SERVICES</span><span style="font:400 10.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Platform operator on behalf of ACSC</span></div>
+<div style="flex:none;display:flex;flex-direction:column;gap:3px;align-items:flex-end"><span style="font:600 11px 'IBM Plex Sans',sans-serif;color:#12201a;letter-spacing:.04em">ACSC PLATFORM</span><span style="font:400 10.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Platform operator on behalf of ACSC</span></div>
 </div>
 </div>
 </div>
@@ -934,9 +988,10 @@
 </sc-if>
 
 <sc-if value="{{showApp}}" hint-placeholder-val="{{false}}">
-<div style="height:100vh;min-width:1400px;display:flex;background:#f4f6f5;overflow:hidden">
+<div class="staff-shell" style="height:100vh;display:flex;background:#f4f6f5;overflow:hidden;position:relative">
 
-<div style="width:{{navWidth}};flex:none;background:#0B3D26;display:flex;flex-direction:column;padding:16px 0 12px;overflow:hidden">
+<sc-if value="{{staffNavBackdropOn}}" hint-placeholder-val="{{false}}"><button onClick="{{closeStaffNav}}" aria-label="Close navigation" style="position:fixed;inset:0;background:rgba(11,20,16,.45);border:none;z-index:190;cursor:pointer"></button></sc-if>
+<div class="staff-sidebar" style="width:{{navWidth}};flex:none;background:#0B3D26;display:flex;flex-direction:column;padding:16px 0 12px;overflow:hidden;transform:{{staffNavTransform}};transition:transform .22s ease">
 <div style="padding:0 16px 16px;display:flex;align-items:flex-start;gap:8px">
 <img src="assets/abia-state-crest.jpg" alt="Abia State Government crest" style="width:26px;height:26px;flex:none;border-radius:6px;object-fit:contain;background:#fff;padding:2px;margin-top:1px">
 <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font:600 14.5px 'IBM Plex Sans',sans-serif;color:#fff;white-space:nowrap">{{brandShort}}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#6fa88b;letter-spacing:.06em;white-space:nowrap">{{brandSub}}</span></div>
@@ -962,8 +1017,9 @@
 <div style="flex:1;min-width:0;display:flex;flex-direction:column">
 
 <div style="height:54px;flex:none;background:#fff;border-bottom:1px solid #dfe5e2;display:flex;align-items:center;gap:12px;padding:0 18px;position:relative;z-index:30">
+<button onClick="{{toggleStaffNav}}" aria-label="Open navigation" class="staff-menu-btn" style="display:none;flex:none;width:34px;height:34px;border:1px solid #dfe5e2;border-radius:7px;background:#fff;align-items:center;justify-content:center;font:600 15px 'IBM Plex Sans',sans-serif;color:#234D3A;cursor:pointer">☰</button>
 <sc-if value="{{appBackShow}}" hint-placeholder-val="{{false}}"><button onClick="{{appBack}}" title="{{appBackTitle}}" style="flex:none;height:32px;display:flex;align-items:center;gap:7px;padding:0 11px;border:1px solid #dfe5e2;border-radius:6px;background:#fff;font:500 12.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">← Back</button></sc-if>
-<div style="flex:1;min-width:190px;max-width:420px;position:relative">
+<div class="staff-topbar-search" style="flex:1;min-width:190px;max-width:420px;position:relative">
 <div style="display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;background:#f2f5f3;border:1px solid #dfe5e2;border-radius:6px">
 <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.6" stroke="#8b9a92" stroke-width="1.5"/><path d="M10.6 10.6L14 14" stroke="#8b9a92" stroke-width="1.5"/></svg>
 <input value="{{query}}" onChange="{{onQuery}}" onKeyDown="{{onQueryKey}}" placeholder="Subscriber ID, phone, unit, reference or session ID" style="flex:1;min-width:0;border:none;background:transparent;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#12201a;outline:none"/>
@@ -1645,7 +1701,7 @@
 <div style="flex:none;border:1px solid #dfe5e2;border-radius:6px;padding:9px 11px;display:flex;flex-direction:column;gap:2px"><span style="font:400 10px 'IBM Plex Sans',sans-serif;color:#6b7c73">Due date</span><span style="font:600 13px 'IBM Plex Sans',sans-serif;color:#12201a">{{iDue}}</span></div>
 </div>
 <div style="display:flex;flex-direction:column;gap:5px"><span style="font:600 9px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">HOW TO PAY</span><span style="font:400 11px/1.55 'IBM Plex Sans',sans-serif;color:#3d4b44">Present this reference at any bank branch, or enter the account number in your bank app. Your payment is matched to your unit automatically — you do not need to send a receipt to anyone.</span></div>
-<div style="padding-top:9px;border-top:1px solid #eef1ef;display:flex;flex-direction:column;gap:3px"><span style="font:400 9.5px/1.5 'IBM Plex Sans',sans-serif;color:#6b7c73">Payment settles directly into the Trustee-controlled Collection Account. FourCore and ACSC Collect do not receive or hold your funds.</span><span style="font:400 9.5px 'IBM Plex Mono',monospace;color:#9aa8a1">Issued 15 Sep 2026 · {{personaName}} · valid to {{iDue}}</span></div>
+<div style="padding-top:9px;border-top:1px solid #eef1ef;display:flex;flex-direction:column;gap:3px"><span style="font:400 9.5px/1.5 'IBM Plex Sans',sans-serif;color:#6b7c73">Payment settles directly into the Trustee-controlled Collection Account. ACSC Collect does not receive or hold your funds.</span><span style="font:400 9.5px 'IBM Plex Mono',monospace;color:#9aa8a1">Issued 15 Sep 2026 · {{personaName}} · valid to {{iDue}}</span></div>
 </div>
 </div>
 </div>
@@ -2322,6 +2378,85 @@
 </div>
 </sc-if>
 
+<sc-if value="{{routeKnowledgeBase}}" hint-placeholder-val="{{false}}">
+<div style="height:100%;display:flex;flex-direction:column;padding:16px 18px;gap:14px;overflow:auto">
+<div style="display:flex;align-items:center;gap:10px;flex:none;flex-wrap:wrap">
+<span style="font:600 18px 'IBM Plex Sans',sans-serif;color:#12201a;letter-spacing:-0.01em">Knowledge Base</span>
+<span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:#f3f8f5;border:1px solid #cfdcd5;font:500 11.5px 'IBM Plex Sans',sans-serif;color:#0F5132"><span style="font-size:9px">◆</span>Natural-language platform intelligence · System Administrator only</span>
+<div style="margin-left:auto;display:flex;gap:8px"><button onClick="{{kbExportCsv}}" style="height:30px;padding:0 12px;border:1px solid #dfe5e2;border-radius:6px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">Export CSV</button><button onClick="{{kbExportPdf}}" style="height:30px;padding:0 12px;border:1px solid #dfe5e2;border-radius:6px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">Export PDF</button></div>
+</div>
+
+<div style="flex:none;background:#fff;border:1px solid #dfe5e2;border-radius:9px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">Ask the Knowledge Base</span>
+<div style="display:flex;gap:8px"><input value="{{kbQuery}}" onChange="{{onKbQuery}}" onKeyDown="{{onKbQueryKey}}" placeholder="e.g. Show weekly EOI payment velocity by trade association" style="flex:1;height:38px;border:1px solid #c9d3cd;border-radius:7px;padding:0 12px;font:400 13px 'IBM Plex Sans',sans-serif;color:#12201a;background:#fff"/><button onClick="{{kbAskAction}}" style="height:38px;padding:0 16px;background:#0F5132;border-radius:7px;font:600 12.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Ask</button></div>
+<div style="display:flex;gap:7px;flex-wrap:wrap"><button onClick="{{kbPreset1}}" style="height:26px;padding:0 10px;border:1px solid #dfe5e2;border-radius:13px;background:#f7f9f8;font:400 11px 'IBM Plex Sans',sans-serif;color:#5b6b63;cursor:pointer">Weekly EOI payment velocity by trade association</button><button onClick="{{kbPreset2}}" style="height:26px;padding:0 10px;border:1px solid #dfe5e2;border-radius:13px;background:#f7f9f8;font:400 11px 'IBM Plex Sans',sans-serif;color:#5b6b63;cursor:pointer">Common KYC exception reasons</button></div>
+<sc-if value="{{kbHasAnswer}}" hint-placeholder-val="{{false}}">
+<div style="padding:11px 13px;background:#EFF6F1;border:1px solid #CFE3D5;border-left:3px solid #2E7D52;border-radius:8px;display:flex;flex-direction:column;gap:4px"><span style="font:600 11.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{kbAnswerQuestion}}</span><span style="font:400 12.5px/1.55 'IBM Plex Sans',sans-serif;color:#2f5e48">{{kbAnswerBody}}</span></div>
+</sc-if>
+</div>
+
+<div style="flex:none;background:#fff;border:1px solid #dfe5e2;border-radius:9px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:9px"><span style="font:600 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">Data Ingestion Engine</span><span style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Live platform feeds plus uploaded documentation, policy briefs and FAQs</span></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<sc-for list="{{kbSources}}" as="src" hint-placeholder-count="4">
+<div style="flex:1;min-width:170px;padding:11px 13px;background:#f7f9f8;border:1px solid #eef1ef;border-radius:8px;display:flex;flex-direction:column;gap:3px"><span style="font:500 12px 'IBM Plex Sans',sans-serif;color:#12201a">{{src.label}}</span><span style="font:600 15px 'IBM Plex Mono',monospace;color:#0F5132">{{src.count}}</span><span style="font:400 10.5px 'IBM Plex Sans',sans-serif;color:#8b9a92">{{src.note}}</span></div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px dashed #c9d3cd;border-radius:8px;background:#fbfcfb">
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#12201a">Upload documentation for indexing</span><span style="font:400 11px 'IBM Plex Sans',sans-serif;color:#8b9a92">PDF, DOCX, TXT or Markdown · policy briefs, FAQs and procedure notes</span></div>
+<input type="file" id="kbFileInput" multiple="{{true}}" accept=".pdf,.doc,.docx,.txt,.md" onChange="{{onKbFileChange}}" style="display:none"/>
+<button onClick="{{kbTriggerUpload}}" style="flex:none;height:34px;padding:0 14px;background:#0F5132;border-radius:7px;font:600 12px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Upload document</button>
+</div>
+<sc-if value="{{kbHasDocs}}" hint-placeholder-val="{{false}}">
+<div style="display:flex;flex-direction:column;border:1px solid #eef1ef;border-radius:8px;overflow:hidden">
+<sc-for list="{{kbDocRows}}" as="d" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid #f0f3f1"><span style="width:34px;flex:none;font:600 10px 'IBM Plex Mono',monospace;color:#8b9a92">{{d.type}}</span><span style="flex:1;min-width:0;font:500 12.5px 'IBM Plex Sans',sans-serif;color:#12201a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{d.name}}</span><span style="width:80px;flex:none;font:400 11px 'IBM Plex Sans',sans-serif;color:#8b9a92">{{d.uploadedAt}}</span><span style="width:90px;flex:none;display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:10px;background:{{d.stBg}};color:{{d.stFg}};font:500 10.5px 'IBM Plex Sans',sans-serif">{{d.status}}</span><button onClick="{{d.remove}}" style="flex:none;font:400 12px;color:#8b9a92;cursor:pointer">✕</button></div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;flex:none">
+<div style="flex:1.6;min-width:320px;background:#fff;border:1px solid #dfe5e2;border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 13px 'IBM Plex Sans',sans-serif;color:#12201a">EOI submission velocity · last 8 weeks</span>
+<div style="height:120px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid #e7ecea">
+<sc-for list="{{kbVelocityWeeks}}" as="w" hint-placeholder-count="8">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px"><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:#5b6b63">{{w.label}}</span><div style="width:100%;background:#0F5132;border-radius:2px 2px 0 0;height:{{w.h}}"></div></div>
+</sc-for>
+</div>
+<span style="font:400 11px 'IBM Plex Sans',sans-serif;color:#8b9a92">{{kbVelocitySummary}}</span>
+</div>
+<div style="flex:1;min-width:260px;background:#fff;border:1px solid #dfe5e2;border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:11px">
+<span style="font:600 13px 'IBM Plex Sans',sans-serif;color:#12201a">Trade cluster adoption</span>
+<sc-for list="{{kbClusters}}" as="c" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:500 12px 'IBM Plex Sans',sans-serif;color:#3d4b44">{{c.label}}</span><span style="font:500 12px 'IBM Plex Mono',monospace;color:#12201a">{{c.pct}}</span></div>
+<div style="height:6px;width:100%;background:#eef1ef;border-radius:3px;overflow:hidden"><div style="height:6px;border-radius:3px;background:{{c.fill}};width:{{c.pct}}"></div></div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;flex:none">
+<div style="flex:1;min-width:280px;background:#fff;border:1px solid #dfe5e2;border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 13px 'IBM Plex Sans',sans-serif;color:#12201a">Payment completion timelines</span>
+<sc-for list="{{kbTimelines}}" as="t" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0f3f1"><span style="flex:1;font:500 12.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">{{t.label}}</span><span style="font:600 13px 'IBM Plex Mono',monospace;color:#12201a">{{t.value}}</span></div>
+</sc-for>
+</div>
+<div style="flex:1;min-width:280px;background:#fff;border:1px solid #dfe5e2;border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 13px 'IBM Plex Sans',sans-serif;color:#12201a">Default risk distribution</span>
+<sc-for list="{{kbRiskTiers}}" as="rt" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:500 12px 'IBM Plex Sans',sans-serif;color:#3d4b44">{{rt.label}}</span><span style="font:500 12px 'IBM Plex Mono',monospace;color:#12201a">{{rt.count}} accounts</span></div>
+<div style="height:6px;width:100%;background:#eef1ef;border-radius:3px;overflow:hidden"><div style="height:6px;border-radius:3px;background:{{rt.fill}};width:{{rt.pct}}"></div></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
 <sc-if value="{{routeStub}}" hint-placeholder-val="{{false}}">
 <div style="height:100%;display:flex;align-items:center;justify-content:center;padding:40px">
 <div style="width:560px;background:#fff;border:1px solid #dfe5e2;border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:13px">
@@ -2421,7 +2556,8 @@ const ROUTES = {
   configuration: { title: "Payment Plans", group: "CONTROL", roles: ["fs"] },
   reports: { title: "Reports & API", group: "CONTROL", roles: ["co", "ro", "fs", "tr", "if"] },
   audit: { title: "Audit Log", group: "ADMIN", roles: ["sa", "fs"] },
-  users: { title: "Users & Roles", group: "ADMIN", roles: ["sa"] }
+  users: { title: "Users & Roles", group: "ADMIN", roles: ["sa"] },
+  knowledgeBase: { title: "Knowledge Base", group: "ADMIN", roles: ["sa"] }
 };
 const GROUP_ORDER = ["OVERSIGHT", "OPERATIONS", "CONTROL", "ADMIN"];
 const DEBT_NOTE = {
@@ -2453,6 +2589,30 @@ const LINES = ["EOI", "Down Payment", "Instalment 1", "Instalment 2", "Instalmen
 
 function rng(seed) { let s = seed; return () => { s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; }; }
 function money(n) { return "₦" + Math.round(n).toLocaleString("en-US"); }
+function fnv1aHash(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, "0");
+}
+function buildQrCells(payload) {
+  if (typeof window === "undefined" || !window.qrcode) return { cells: [], viewBox: "0 0 33 33" };
+  const qr = window.qrcode(0, "M");
+  qr.addData(payload);
+  qr.make();
+  const n = qr.getModuleCount();
+  const quiet = 4;
+  const total = n + quiet * 2;
+  const cells = [];
+  for (let r = 0; r < n; r++) {
+    for (let c = 0; c < n; c++) {
+      if (qr.isDark(r, c)) cells.push({ x: c + quiet, y: r + quiet });
+    }
+  }
+  return { cells, viewBox: "0 0 " + total + " " + total };
+}
 function abbr(n) {
   if (n >= 1e9) return "₦" + (n / 1e9).toFixed(2) + "bn";
   if (n >= 1e6) return "₦" + (n / 1e6).toFixed(1) + "m";
@@ -2678,10 +2838,10 @@ function buildStore() {
   ];
 
   const reports = [
-    { name: "Daily collections", scope: "All revenue lines · by channel", format: "PDF · CSV", schedule: "Daily 06:00", recipients: "Trustee, IFMC, FourCore Finance", last: "15 Sep 06:00" },
+    { name: "Daily collections", scope: "All revenue lines · by channel", format: "PDF · CSV", schedule: "Daily 06:00", recipients: "Trustee, IFMC, ACSC Finance", last: "15 Sep 06:00" },
     { name: "Revenue-line summary", scope: "EOI · Down Payment · Instalments", format: "XLSX", schedule: "Weekly Mon 07:00", recipients: "Trustee, IFMC, Project Mgmt", last: "14 Sep 07:00" },
     { name: "Reconciliation status", scope: "Subscriber · Unit · Revenue line", format: "PDF · XLSX", schedule: "Monthly 1st 07:00", recipients: "Trustee, IFMC", last: "01 Sep 07:00" },
-    { name: "Exception ageing", scope: "By type · SLA breach", format: "CSV", schedule: "Weekly Mon 07:00", recipients: "Trustee, FourCore Ops", last: "14 Sep 07:00" },
+    { name: "Exception ageing", scope: "By type · SLA breach", format: "CSV", schedule: "Weekly Mon 07:00", recipients: "Trustee, ACSC Ops", last: "14 Sep 07:00" },
     { name: "Mandate performance", scope: "Active · failed · retries", format: "XLSX", schedule: "Monthly 1st 07:00", recipients: "Trustee, IFMC", last: "01 Sep 07:00" }
   ];
   const apiClients = [
@@ -2689,7 +2849,7 @@ function buildStore() {
     { id: "AK-02", client: "Trustee Reporting Feed", owner: "tr", scopes: "collections.read · account.read", created: "12 Aug 2026", used: "15 Sep 2026 06:00", ip: "1 address", status: "Active", k: "ok" },
     { id: "AK-03", client: "Abia State Dashboard (pilot)", owner: "sa", scopes: "collections.read", created: "02 Sep 2026", used: "never", ip: "not set", status: "Pending IP allowlist", k: "pending" }
   ];
-  const users = PERSONAS.map((p) => ({ name: p.name, role: p.role, email: p.name.toLowerCase().replace(/ /g, ".") + "@fourcore.ng", status: "Active", last: "15 Sep 2026" }));
+  const users = PERSONAS.map((p) => ({ name: p.name, role: p.role, email: p.name.toLowerCase().replace(/ /g, ".") + "@acsc.ng", status: "Active", last: "15 Sep 2026" }));
 
   return {
     subscribers, units, transactions, dayTotals, schedules, mandates,
@@ -2732,6 +2892,8 @@ const UTILITY_CATEGORIES = [
 ];
 const LANGS = ["English", "Igbo", "Hausa", "Yorùbá", "Pidgin"];
 const EOI_FEE = 50000;
+const EOI_APPLICATION_FEE = 10000;
+const EOI_DIGITAL_APP_FEE = 40000;
 
 const PAYMENT_STATUS_CHIP = {
   Settled: { bg: "#E3F2E8", fg: "#2F8557" },
@@ -2848,7 +3010,7 @@ const PROVIDERS = [
 const DEMO_SCENARIOS = [
   { id: "A", label: "Chinedu Okafor", sub: "Individual · Independent applicant",
     account: { id: "APP-10001", email: "chinedu.demo@acsc.ng", phone: "0803 412 7721", name: "Chinedu Okafor", createdAt: "10 Sep 2026", status: "active" },
-    base: { ref: "ACSC-EOI-2609-100010-01", sid: "LEP-100010", virtual: "9931 100010 01", invoice: "ACSC-EOI-2026-10010", queueId: "RQ-2026-1001",
+    base: { ref: "ACSC-EOI-2609-100010-01", sid: "LEP-100010", virtual: "9931 100010 01", invoice: "ACSC-EOI-2026-10010", queueId: "RQ-2026-001001",
       category: "Retail Shop", qty: 1, association: "Independent", purchase: "Individual", business: null,
       stream: "Independent Offtaker", channel: "Bank Transfer", submittedAt: "10 Sep 2026 09:14", paidAt: "10 Sep 2026 09:16",
       kycIdentity: { name: "Chinedu Okafor", idType: "BVN", idNumber: "22011122334", dob: "14 Mar 1985", gender: "Male" } },
@@ -2866,7 +3028,7 @@ const DEMO_SCENARIOS = [
     ] },
   { id: "B", label: "Adaeze Nwachukwu", sub: "Association member · Ariaria Market Traders Association",
     account: { id: "APP-10002", email: "adaeze.demo@acsc.ng", phone: "0803 550 8890", name: "Adaeze Nwachukwu", createdAt: "11 Sep 2026", status: "active" },
-    base: { ref: "ACSC-EOI-2609-100020-01", sid: "LEP-100020", virtual: "9931 100020 01", invoice: "ACSC-EOI-2026-10020", queueId: "RQ-2026-1002",
+    base: { ref: "ACSC-EOI-2609-100020-01", sid: "LEP-100020", virtual: "9931 100020 01", invoice: "ACSC-EOI-2026-10020", queueId: "RQ-2026-001002",
       category: "Wholesale Shop", qty: 2, association: "Ariaria Market Traders Association", purchase: "Individual", business: null,
       stream: "Ariaria Market Traders Association Cohort", channel: "Bank App", submittedAt: "11 Sep 2026 10:02", paidAt: "11 Sep 2026 10:05",
       kycIdentity: { name: "Adaeze Nwachukwu", idType: "NIN", idNumber: "19004455667", dob: "02 Jul 1990", gender: "Female" } },
@@ -2877,7 +3039,7 @@ const DEMO_SCENARIOS = [
     ] },
   { id: "C", label: "Okafor & Sons Ltd", sub: "Registered Company · Corporate applicant",
     account: { id: "APP-10003", email: "corporate.demo@acsc.ng", phone: "0803 660 1122", name: "Ngozi Eze", createdAt: "12 Sep 2026", status: "active" },
-    base: { ref: "ACSC-EOI-2609-100030-01", sid: "LEP-100030", virtual: "9931 100030 01", invoice: "ACSC-EOI-2026-10030", queueId: "RQ-2026-1003",
+    base: { ref: "ACSC-EOI-2609-100030-01", sid: "LEP-100030", virtual: "9931 100030 01", invoice: "ACSC-EOI-2026-10030", queueId: "RQ-2026-001003",
       category: "Industrial Shop", qty: 1, association: "Independent", purchase: "Business / Company", business: "Okafor & Sons Ltd",
       stream: "Independent Offtaker", channel: "Bank Branch", submittedAt: "12 Sep 2026 08:44", paidAt: "12 Sep 2026 08:47",
       kycIdentity: { name: "Ngozi Eze", idType: "BVN", idNumber: "22099887766", dob: "19 Nov 1979", gender: "Female" },
@@ -2896,7 +3058,7 @@ const DEMO_SCENARIOS = [
 class Component extends DCLogic {
   state = {
     publicRoute: null, eoiView: "desktop", eoiLang: "English", eoiVoice: false,
-    eIdentity: null, eIdentityRevealed: false,
+    eIdentity: null,
     eParticipation: null, eAssoc: null, eAssocQuery: "", eAssocOpen: false,
     eCategory: null, eQty: 1, eStep: 1, eTouched: {},
     eEntityIdentity: null,
@@ -2910,6 +3072,8 @@ class Component extends DCLogic {
     kycIdType: "BVN", kycIdNumber: "", kycLookup: null,
     entityTin: "", entityTinLookup: null,
     pDemoOpen: false, pDemoScenarioId: "A", pDemoLifecycleIdx: 0,
+    supportModalOpen: false, supportCopyDone: false,
+    kbDocuments: [], kbQuery: "", kbAnswer: null,
     assocQuotaUsed: { lepmaas: 998, umlt: 999 },
     eFundingRoute: null, eDepositAmount: "", eDepositError: "",
     disclaimerAccepted: false, disclaimerChecked: false,
@@ -2935,7 +3099,7 @@ class Component extends DCLogic {
     pProfileEditing: false, pProfileNameDraft: "", pProfilePhoneDraft: "",
     signedIn: false, step: 1, user: "", pass: "", otp: "", otpError: false,
     personaId: "amaka", route: "overview", routeArg: null, loading: false,
-    navCollapsed: false, query: "", searchOpen: false, dateOpen: false, bellOpen: false, personaOpen: false,
+    navCollapsed: false, staffNavOpen: false, isMobileViewport: false, query: "", searchOpen: false, dateOpen: false, bellOpen: false, personaOpen: false,
     range: "mtd", toasts: [], store: buildStore(), readNotifs: [],
     filters: { status: null, recon: null, channel: null, line: null, day: null, view: "all" },
     sort: { key: "time", dir: "desc" }, page: 0, selected: [], drawerId: null,
@@ -3030,14 +3194,89 @@ class Component extends DCLogic {
     window.addEventListener("keydown", this.onKey);
     this._clock = setInterval(() => this.setState((s) => ({ tick: s.tick + 1 })), 30000);
     if (location.hash) this.onHash();
+    this.onResize = () => {
+      const isMobile = window.innerWidth < 860;
+      this.setState((s) => {
+        const patch = {};
+        if (s.eoiView !== (isMobile ? "mobile" : "desktop")) patch.eoiView = isMobile ? "mobile" : "desktop";
+        if (s.isMobileViewport !== isMobile) { patch.isMobileViewport = isMobile; if (!isMobile) patch.staffNavOpen = false; }
+        return Object.keys(patch).length ? patch : null;
+      });
+    };
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
   }
   componentWillUnmount() {
     window.removeEventListener("hashchange", this.onHash);
     window.removeEventListener("keydown", this.onKey);
+    window.removeEventListener("resize", this.onResize);
     clearInterval(this._clock); clearInterval(this._live); clearTimeout(this._ld); clearInterval(this._cd); clearTimeout(this._lk); clearTimeout(this._et);
   }
 
   eSay(text) { clearTimeout(this._et); this.setState({ eoiToast: text }); this._et = setTimeout(() => this.setState({ eoiToast: null }), 2600); }
+
+  openSupportModal() { this.setState({ supportModalOpen: true, supportCopyDone: false }); }
+  closeSupportModal() { this.setState({ supportModalOpen: false }); }
+  copySupportPhone() {
+    const text = "0800 2272 4357";
+    if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(() => {});
+    }
+    clearTimeout(this._supportCopyTimer);
+    this.setState({ supportCopyDone: true });
+    this._supportCopyTimer = setTimeout(() => this.setState({ supportCopyDone: false }), 1800);
+  }
+
+  kbUploadFiles(fileList) {
+    const files = Array.from(fileList || []);
+    if (!files.length) return;
+    const allowedExt = /\.(pdf|docx?|txt|md)$/i;
+    const accepted = files.filter((f) => allowedExt.test(f.name));
+    const rejectedCount = files.length - accepted.length;
+    if (!accepted.length) { this.toast("Unsupported file type", "Upload PDF, DOCX, TXT or Markdown files only.", "#B42318"); return; }
+    const docs = accepted.map((f) => ({
+      id: "KB-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
+      name: f.name, type: (f.name.split(".").pop() || "").toUpperCase(), size: f.size, status: "Processing", uploadedAt: "Just now"
+    }));
+    this.setState((s) => ({ kbDocuments: docs.concat(s.kbDocuments) }));
+    this.logAudit("Knowledge base document uploaded", docs.map((d) => d.name).join(", "), "—", accepted.length + " file(s)");
+    this.toast(accepted.length + " document(s) queued", rejectedCount ? rejectedCount + " file(s) skipped (unsupported type)." : "Indexing for search and analytics.", "#5FD39A");
+    docs.forEach((d) => {
+      setTimeout(() => {
+        this.setState((s) => ({ kbDocuments: s.kbDocuments.map((x) => x.id === d.id ? Object.assign({}, x, { status: "Indexed" }) : x) }));
+      }, 1300 + Math.random() * 900);
+    });
+  }
+  kbRemoveDoc(id) {
+    this.setState((s) => ({ kbDocuments: s.kbDocuments.filter((d) => d.id !== id) }));
+  }
+  kbAnswerText(q) {
+    const st = this.state.store;
+    const lower = q.toLowerCase();
+    if (lower.indexOf("velocity") >= 0 || lower.indexOf("weekly") >= 0) {
+      return "EOI submissions are trending at roughly " + Math.round(st.kpi.eoiApplications / 8).toLocaleString("en-US") + " applications/week platform-wide. Ariaria-affiliated applicants currently submit fastest, followed by independent applicants and Ekeoha-affiliated applicants — see Trade Cluster Adoption below.";
+    }
+    if (lower.indexOf("kyc") >= 0 || lower.indexOf("exception") >= 0) {
+      return "The most common KYC exception reasons this month are: BVN/NIN registry mismatch, expired identity document, and duplicate applicant record. " + st.kpi.openExc + " exceptions are currently open across all queues.";
+    }
+    if (lower.indexOf("default") >= 0 || lower.indexOf("risk") >= 0) {
+      return "Default risk is concentrated in the bank-financed instalment cohort. " + st.kpi.openExc + " accounts are currently flagged for manual review — see Default Risk Distribution below.";
+    }
+    if (lower.indexOf("payment") >= 0 || lower.indexOf("completion") >= 0 || lower.indexOf("timeline") >= 0) {
+      return "Average time from EOI payment to full down payment completion is 5–7 weeks across cohorts. Self-funded applicants complete faster than bank-financed applicants — see Payment Completion Timelines below.";
+    }
+    return "No indexed document or platform metric matched that query yet. Try asking about EOI velocity, KYC exceptions, payment completion, or default risk — or upload a policy brief so it can be indexed.";
+  }
+  kbAsk() {
+    const q = this.state.kbQuery.trim();
+    if (!q) return;
+    this.setState({ kbAnswer: { q, a: this.kbAnswerText(q) } });
+    this.logAudit("Knowledge base query", q, "—", "natural-language search");
+  }
+  kbAskPreset(q) {
+    this.setState({ kbQuery: q, kbAnswer: { q, a: this.kbAnswerText(q) } });
+    this.logAudit("Knowledge base query", q, "—", "natural-language search");
+  }
 
   pubGo(patch) {
     this.setState((s) => ({
@@ -3105,7 +3344,6 @@ class Component extends DCLogic {
     this.eSay("Identity verified via " + S.kycIdType);
   }
   rejectEoiIdentity() { this.setState({ kycIdNumber: "", kycLookup: null }); this.eSay("Re-enter your identification number"); }
-  toggleIdentityReveal() { this.setState((s) => ({ eIdentityRevealed: !s.eIdentityRevealed })); }
 
   lookupEntityTin(tin) {
     clearTimeout(this._letk);
@@ -3577,7 +3815,7 @@ class Component extends DCLogic {
       eoiRecords: s.eoiRecord ? (s.eoiRecords || []).concat([s.eoiRecord]) : (s.eoiRecords || []),
       eoiRecord: null, portalRecord: null, ePhase: null, eInvoiceRef: "", eInvoiceVirtual: "",
       eParticipation: null, eAssoc: null, eAssocQuery: "", eCategory: null, eQty: 1, eStep: 1, eTouched: {},
-      eIdentity: null, eIdentityRevealed: false, kycIdType: "BVN", kycIdNumber: "", kycLookup: null,
+      eIdentity: null, kycIdType: "BVN", kycIdNumber: "", kycLookup: null,
       eEntityIdentity: null, entityTin: "", entityTinLookup: null,
       eFundingRoute: null, eDepositAmount: "", eDepositError: ""
     }));
@@ -3609,7 +3847,7 @@ class Component extends DCLogic {
 
     const record = {
       ref, sid, virtual, name: displayName, personName, email: acct.email || "—", phone: acct.phone || "—",
-      invoice, queueId: "RQ-2026-" + pad(Math.floor(Math.random() * 9000) + 1000, 4),
+      invoice, queueId: "RQ-2026-" + pad(Math.floor(Math.random() * 999999) + 1, 6),
       paidAt, channel,
       stream: S.eParticipation === "association" && assoc ? assoc.label + " Cohort" : "Independent Offtaker",
       association: S.eParticipation === "association" && assoc ? assoc.label : "Independent",
@@ -3671,6 +3909,7 @@ class Component extends DCLogic {
 
   nav(route, arg) {
     const hash = "#/" + route + (arg ? "/" + arg : "");
+    this.setState({ staffNavOpen: false });
     if (location.hash === hash) { this.onHash(); return; }
     this.setState((s) => ({ appHistory: (s.appHistory || []).concat([{ route: s.route, arg: s.routeArg }]) }));
     location.hash = hash;
@@ -4579,7 +4818,11 @@ class Component extends DCLogic {
           eCycleLang: () => { const i = (LANGS.indexOf(S.eoiLang) + 1) % LANGS.length; this.setState({ eoiLang: LANGS[i] }); this.eSay("Language: " + LANGS[i]); },
           eVoiceBg: S.eoiVoice ? "#2E7D52" : "#EFF6F1", eVoiceBorder: S.eoiVoice ? "#2E7D52" : "#CFE3D5", eVoiceColor: S.eoiVoice ? "#ffffff" : "#2E7D52",
           eToggleVoice: () => { this.setState({ eoiVoice: !S.eoiVoice }); this.eSay(S.eoiVoice ? "Voice assistance off" : "Voice assistance on — fields will be read aloud"); },
-          eHelp: () => this.eSay("A field agent can help you at any registration desk · 0800 ACSC HELP"),
+          eHelp: () => this.openSupportModal(),
+          supportModalOpen: S.supportModalOpen,
+          closeSupportModal: () => this.closeSupportModal(),
+          copySupportPhone: () => this.copySupportPhone(),
+          copySupportLabel: S.supportCopyDone ? "Copied ✓" : "Copy number",
           eJourney: JOURNEY_STAGES.map((j, i) => ({
             n: pad(i + 1, 2), label: j.label, sub: i === 0 ? "Interest and administrative fee" : j.next(), flex: i === JOURNEY_STAGES.length - 1 ? "0 0 150px" : "1",
             dotBg: i === 0 ? "#2E7D52" : "#eef1ef", dotColor: i === 0 ? "#ffffff" : "#8b9a92",
@@ -4594,6 +4837,10 @@ class Component extends DCLogic {
           eFeeQty: String(Number(S.eQty) || 1),
           eFeeBreakdown: (Number(S.eQty) || 1) + " × " + money(EOI_FEE) + " per unit of interest",
           eFeeMulti: (Number(S.eQty) || 1) > 1,
+          eInvoiceLines: [
+            { label: "Application Fee", qty: String(Number(S.eQty) || 1), unit: money(EOI_APPLICATION_FEE), amount: money(EOI_APPLICATION_FEE * (Number(S.eQty) || 1)) },
+            { label: "Registration For Digital App", qty: String(Number(S.eQty) || 1), unit: money(EOI_DIGITAL_APP_FEE), amount: money(EOI_DIGITAL_APP_FEE * (Number(S.eQty) || 1)) }
+          ],
 
           kycIdTypes: ["BVN", "NIN"].map((t) => Object.assign({}, radio(S.kycIdType === t), {
             label: t, sub: t === "BVN" ? "Bank Verification Number" : "National Identity Number",
@@ -4677,18 +4924,15 @@ class Component extends DCLogic {
           eStep3Continue: () => this.eGoStep(4),
           eBackToStep2: () => this.eGoStep(2),
 
-          eIdentityRevealed: S.eIdentityRevealed,
-          toggleIdentityReveal: () => this.toggleIdentityReveal(),
-          eIdRevealLabel: S.eIdentityRevealed ? "🙈 Hide" : "👁 Reveal",
           eReviewRows: (() => {
             const kycRows = S.eParticipation === "business" ? [
-              { label: "Business / Company", value: S.eEntityIdentity ? S.eEntityIdentity.name : "—", masked: false },
-              { label: "Registered TIN", value: S.eEntityIdentity ? S.eEntityIdentity.idNumber : "—", masked: false },
-              { label: "Verification status", value: S.eEntityIdentity ? "Verified" : "—", masked: false }
+              { label: "Business / Company", value: S.eEntityIdentity ? S.eEntityIdentity.name : "—" },
+              { label: "Registered TIN", value: S.eEntityIdentity ? S.eEntityIdentity.idNumber : "—" },
+              { label: "Verification status", value: S.eEntityIdentity ? "Verified" : "—" }
             ] : [
-              { label: "Full name", value: S.eIdentity ? S.eIdentity.name : "—", masked: true },
-              { label: "Contact", value: S.eIdentity ? ((S.eIdentity.phone || "—") + " · " + (S.eIdentity.email || "—")) : "—", masked: true },
-              { label: (S.eIdentity ? S.eIdentity.idType : "BVN") + " / NIN", value: S.eIdentity ? (S.eIdentityRevealed ? S.eIdentity.idNumber : maskIdentityNumber(S.eIdentity.idNumber)) : "—", masked: false }
+              { label: "Full name", value: S.eIdentity ? S.eIdentity.name : "—" },
+              { label: "Contact", value: S.eIdentity ? ((S.eIdentity.phone || "—") + " · " + (S.eIdentity.email || "—")) : "—" },
+              { label: (S.eIdentity ? S.eIdentity.idType : "BVN") + " / NIN", value: S.eIdentity ? maskIdentityNumber(S.eIdentity.idNumber) : "—" }
             ];
             return kycRows.concat([
               { label: "Application stream", value: S.eParticipation === "association" ? (assoc ? assoc.label + " Cohort" : "Association") : S.eParticipation === "business" ? "Business / Company" : "Individual", to: 1 },
@@ -4698,7 +4942,6 @@ class Component extends DCLogic {
             ]).map((r) => ({
               label: r.label, value: r.value,
               editable: r.to !== undefined,
-              blurFilter: r.masked && !S.eIdentityRevealed ? "blur(5px)" : "none",
               edit: r.to !== undefined ? () => this.eGoStep(r.to) : () => {}
             }));
           })(),
@@ -4731,9 +4974,17 @@ class Component extends DCLogic {
           rCategory: pr ? pr.category : "", rQty: pr ? String(pr.qty) : "", rPaidAt: pr ? pr.paidAt : "",
           rChannel: pr ? pr.channel : "", rVirtual: pr ? pr.virtual : "", rAmount: pr ? money(pr.amount) : money(EOI_FEE),
           rUnitFee: money(EOI_FEE), rLineQty: pr ? String(pr.qty) : "1",
+          rInvoiceLines: [
+            { label: "Application Fee", desc: pr ? (pr.category + " · " + pr.stream) : "", qty: pr ? String(pr.qty) : "1", unit: money(EOI_APPLICATION_FEE), amount: money(EOI_APPLICATION_FEE * (pr ? pr.qty : 1)) },
+            { label: "Registration For Digital App", desc: "", qty: pr ? String(pr.qty) : "1", unit: money(EOI_DIGITAL_APP_FEE), amount: money(EOI_DIGITAL_APP_FEE * (pr ? pr.qty : 1)) }
+          ],
           rEmail: pr ? pr.email : "", rPhone: pr ? pr.phone : "",
-          rHasIdentity: !!(pr && pr.kycIdentity), rIdentityType: pr && pr.kycIdentity ? pr.kycIdentity.idType : "",
-          rIdentityMasked: pr && pr.kycIdentity ? maskIdentityNumber(pr.kycIdentity.idNumber) : "",
+          ...(() => {
+            if (!pr) return { rQrCells: [], rQrViewBox: "0 0 33 33" };
+            const sig = fnv1aHash([pr.invoice, pr.ref, pr.amount, pr.sid, pr.queueId].join("|"));
+            const q = buildQrCells("https://acsc.ng/verify?invoice=" + encodeURIComponent(pr.invoice) + "&ref=" + encodeURIComponent(pr.ref) + "&sig=" + sig);
+            return { rQrCells: q.cells, rQrViewBox: q.viewBox };
+          })(),
           receiptOn: S.publicRoute === "receipt",
           eoiToastOn: !!S.eoiToast, eoiToastText: S.eoiToast || "",
           pubBackLabel: "Back",
@@ -4745,6 +4996,18 @@ class Component extends DCLogic {
       pAuthEmail: S.pAuthEmail, onPAuthEmail: (e) => this.setState({ pAuthEmail: e.target.value }),
       pAuthPassword: S.pAuthPassword, onPAuthPassword: (e) => this.setState({ pAuthPassword: e.target.value }),
       pAuthContinue: () => this.pAuthContinue(),
+      ...(() => {
+        const emailRaw = S.pAuthEmail.trim();
+        const formatOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(emailRaw);
+        const valid = emailRaw !== "" && formatOk;
+        const invalid = emailRaw !== "" && !formatOk;
+        return {
+          pAuthEmailValid: valid, pAuthEmailInvalid: invalid,
+          pAuthEmailShowCheck: valid, pAuthEmailShowError: invalid,
+          pAuthEmailBorder: invalid ? "2px solid #C1443A" : valid ? "2px solid #2F8557" : "1px solid #c9d3cd",
+          pAuthContinueBg: invalid ? "#a9b7ae" : "#2E7D52"
+        };
+      })(),
       pSocialProviders: PROVIDERS.map((p) => ({
         label: p.label, badge: p.badge, badgeBg: p.badgeBg, badgeColor: p.badgeColor,
         title: p.label + " sign in",
@@ -4775,7 +5038,7 @@ class Component extends DCLogic {
       staffToggleLabel: S.pStaffToggle ? "Hide staff sign in" : "Staff sign in →",
       backToSignIn: () => this.pubBack(),
       signInStep1: S.step === 1, signInStep2: S.step === 2,
-      signInUser: S.user, signInPass: S.pass, signInUserShown: S.user || "n.okoro@fourcore.ng", otp: S.otp, otpError: S.otpError,
+      signInUser: S.user, signInPass: S.pass, signInUserShown: S.user || "n.okoro@acsc.ng", otp: S.otp, otpError: S.otpError,
       personaOptions: PERSONAS.map((x) => ({ id: x.id, label: x.name + " — " + x.role })),
       onUser: (e) => this.setState({ user: e.target.value }),
       onPass: (e) => this.setState({ pass: e.target.value }),
@@ -4797,8 +5060,12 @@ class Component extends DCLogic {
       navWidth: S.navCollapsed ? "74px" : "214px",
       navIcon: S.navCollapsed ? "»" : "«",
       brandShort: S.navCollapsed ? "ACSC" : "ACSC Collect",
-      brandSub: S.navCollapsed ? "" : (p.key === "tr" ? "TRUSTEE · OVERSIGHT" : p.key === "if" ? "IFMC · OVERSIGHT" : "FOURCORE · OPERATOR"),
+      brandSub: S.navCollapsed ? "" : (p.key === "tr" ? "TRUSTEE · OVERSIGHT" : p.key === "if" ? "IFMC · OVERSIGHT" : "ACSC · OPERATOR"),
       toggleNav: () => this.setState((s) => ({ navCollapsed: !s.navCollapsed })),
+      staffNavTransform: (S.isMobileViewport && !S.staffNavOpen) ? "translateX(-105%)" : "translateX(0)",
+      toggleStaffNav: () => this.setState((s) => ({ staffNavOpen: !s.staffNavOpen })),
+      closeStaffNav: () => this.setState({ staffNavOpen: false }),
+      staffNavBackdropOn: !!(S.isMobileViewport && S.staffNavOpen),
       navGroups, sessionTag: p.key === "tr" || p.key === "if" || p.key === "pm" ? "READ-ONLY SESSION" : "MAKER-CHECKER ACTIVE",
       appBack: () => this.appBack(),
       appBackShow: (S.appHistory || []).length > 0,
@@ -5455,6 +5722,76 @@ class Component extends DCLogic {
       // ===== users =====
       routeUsers: !S.loading && allowed && S.route === "users",
       userRows: st.users.map((u) => ({ name: u.name, email: u.email, role: u.role, status: u.status, last: u.last, current: u.name === p.name ? "current session" : "" })),
+
+      // ===== knowledge base =====
+      routeKnowledgeBase: !S.loading && allowed && S.route === "knowledgeBase",
+      kbQuery: S.kbQuery,
+      onKbQuery: (e) => this.setState({ kbQuery: e.target.value }),
+      onKbQueryKey: (e) => { if (e.key === "Enter") this.kbAsk(); },
+      kbAskAction: () => this.kbAsk(),
+      kbPreset1: () => this.kbAskPreset("Show weekly EOI payment velocity by trade association"),
+      kbPreset2: () => this.kbAskPreset("List common KYC exception reasons"),
+      kbHasAnswer: !!S.kbAnswer,
+      kbAnswerQuestion: S.kbAnswer ? "“" + S.kbAnswer.q + "”" : "",
+      kbAnswerBody: S.kbAnswer ? S.kbAnswer.a : "",
+      kbSources: [
+        { label: "Platform Transactions", count: st.transactions.length.toLocaleString("en-US"), note: "Synced live · every payment event" },
+        { label: "Applicant Intake", count: st.kpi.eoiApplications.toLocaleString("en-US"), note: "Synced live · EOI submissions" },
+        { label: "Association Cohorts", count: String(ASSOCIATIONS.length), note: "Synced live · registered associations" },
+        { label: "Construction Milestones", count: String(MILESTONE_PHASES_DEFAULT.length), note: "Synced live · phase tracker" }
+      ],
+      kbTriggerUpload: () => { const el = typeof document !== "undefined" ? document.getElementById("kbFileInput") : null; if (el) el.click(); },
+      onKbFileChange: (e) => { this.kbUploadFiles(e.target.files); e.target.value = ""; },
+      kbHasDocs: S.kbDocuments.length > 0,
+      kbDocRows: S.kbDocuments.map((d) => ({
+        id: d.id, name: d.name, type: d.type, uploadedAt: d.uploadedAt,
+        status: d.status, stBg: d.status === "Indexed" ? "#E3F2E8" : "#FDF3E2", stFg: d.status === "Indexed" ? "#2F8557" : "#8A5A1E",
+        remove: () => this.kbRemoveDoc(d.id)
+      })),
+      kbVelocityWeeks: (() => {
+        const weights = [0.09, 0.10, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16];
+        const total = st.kpi.eoiApplications;
+        const max = Math.max(...weights);
+        return weights.map((w, i) => ({ label: "Wk " + (i + 1), h: Math.round((w / max) * 100) + "%" }));
+      })(),
+      kbVelocitySummary: st.kpi.eoiApplications.toLocaleString("en-US") + " total EOI submissions · velocity trending upward over the last 8 weeks",
+      kbClusters: [
+        { label: "Ariaria market cluster", pct: "42%", fill: "#0F5132" },
+        { label: "Ekeoha market cluster", pct: "27%", fill: "#2f7d55" },
+        { label: "Cemetery market cluster", pct: "18%", fill: "#6aa987" },
+        { label: "Independent / other", pct: "13%", fill: "#cfdcd5" }
+      ],
+      kbTimelines: [
+        { label: "Self-funded down payment", value: "4.8 wks avg" },
+        { label: "Bank-financed down payment", value: "7.2 wks avg" },
+        { label: "Association cohort applicants", value: "6.1 wks avg" }
+      ],
+      kbRiskTiers: (() => {
+        const exc = st.kpi.openExc;
+        const low = Math.round(exc * 0.6), med = Math.round(exc * 0.3), high = Math.max(exc - low - med, 0);
+        const denom = Math.max(low + med + high, 1);
+        return [
+          { label: "Low risk", count: low, pct: Math.round((low / denom) * 100) + "%", fill: "#2F8557" },
+          { label: "Medium risk", count: med, pct: Math.round((med / denom) * 100) + "%", fill: "#D9922E" },
+          { label: "High risk", count: high, pct: Math.round((high / denom) * 100) + "%", fill: "#B42318" }
+        ];
+      })(),
+      kbExportCsv: () => {
+        this.exportCsv("acsc-knowledge-base-summary.csv",
+          ["Metric", "Value"],
+          [
+            ["EOI applications (total)", st.kpi.eoiApplications],
+            ["Registered subscribers", st.kpi.registered],
+            ["Open exceptions", st.kpi.openExc],
+            ["Auto-match rate", st.kpi.autoMatch.toFixed(1) + "%"],
+            ["Indexed documents", S.kbDocuments.filter((d) => d.status === "Indexed").length],
+            ["Ariaria cluster adoption", "42%"], ["Ekeoha cluster adoption", "27%"], ["Cemetery cluster adoption", "18%"]
+          ]
+        );
+        this.toast("Knowledge base summary exported", "CSV downloaded for executive reporting.", "#5FD39A");
+        this.logAudit("Knowledge base export", "Summary CSV", "—", "Downloaded for Trustee review");
+      },
+      kbExportPdf: () => { if (typeof window !== "undefined") window.print(); this.logAudit("Knowledge base export", "Summary PDF", "—", "Print dialog opened"); },
 
       modalOpen: !!S.modal,
       modalIsMessage: !!S.modal && (S.modal.kind === "reminder" || S.modal.kind === "share"),
