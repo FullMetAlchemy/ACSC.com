@@ -225,18 +225,14 @@
 </div>
 </sc-if>
 
-<sc-if value="{{ePhasePay}}" hint-placeholder-val="{{false}}">
+<sc-if value="{{ePhaseInvoiced}}" hint-placeholder-val="{{false}}">
 <div style="flex:1;padding:{{eBodyPad}};display:flex;justify-content:center">
 <div style="width:100%;max-width:560px;display:flex;flex-direction:column;gap:15px">
-<div style="display:flex;flex-direction:column;gap:5px"><span style="font:600 21px 'IBM Plex Sans',sans-serif;color:#12201a;letter-spacing:-0.01em">Pay the administrative fee</span><span style="font:400 13.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">A one-off, non-negotiable administrative fee of {{eFeeText}} completes your Expression of Interest and creates your applicant profile.</span></div>
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font:600 21px 'IBM Plex Sans',sans-serif;color:#12201a;letter-spacing:-0.01em">Invoice Details</span><span style="font:400 13.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">The Central Billing System has issued an immutable invoice for this administrative fee. Complete payment into the designated Trustee Collection Account to settle it.</span></div>
 <div style="background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:14px">
-<div style="display:flex;align-items:baseline;gap:9px;padding-bottom:13px;border-bottom:1px solid #eef1ef"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">Amount due</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">{{eFeeBreakdown}}</span></div><span style="margin-left:auto;font:600 26px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{eFeeText}}</span></div>
-<div style="display:flex;flex-direction:column;gap:2px;padding:13px 15px;background:#f7f9f8;border:1px solid #eef1ef;border-radius:9px"><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">PAY INTO · PARTNER BANK A</span><span style="font:600 20px 'IBM Plex Mono',monospace;color:#12201a;letter-spacing:.04em">{{eVirtual}}</span><span style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#5b6b63">ACSC Trustee Collection Account · your account identifies the payment automatically</span></div>
-<div style="display:flex;flex-direction:column;gap:9px"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#3d4b44">How are you paying?</span>
-<sc-for list="{{ePayChannels}}" as="c" hint-placeholder-count="3"><button onClick="{{c.go}}" style="min-height:58px;border:{{c.border}};background:{{c.bg}};border-radius:10px;display:flex;align-items:center;gap:12px;padding:0 15px;width:100%;cursor:pointer"><div style="width:20px;height:20px;flex:none;border-radius:50%;border:2px solid {{c.ring}};display:flex;align-items:center;justify-content:center"><div style="width:10px;height:10px;border-radius:50%;background:{{c.dot}}"></div></div><div style="display:flex;flex-direction:column"><span style="font:600 14.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{c.label}}</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{c.sub}}</span></div></button></sc-for>
-</div>
-<div style="padding:11px 13px;background:#EFF6F1;border:1px solid #CFE3D5;border-radius:9px"><span style="font:400 12px/1.55 'IBM Plex Sans',sans-serif;color:#2f5e48">Funds settle directly into the Trustee-controlled Collection Account. FourCore and ACSC Collect never receive or hold your money, and no agent may collect this fee on our behalf.</span></div>
-<div style="display:flex;gap:10px;flex-wrap:wrap"><button onClick="{{eConfirmPayment}}" style="flex:1;min-width:210px;min-height:52px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;font:600 15px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">{{ePayLabel}}</button><button onClick="{{ePayBack}}" style="min-height:52px;padding:0 16px;border:1px solid #c9d3cd;border-radius:10px;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">Back</button></div>
+<div style="display:flex;align-items:baseline;gap:9px;padding-bottom:13px;border-bottom:1px solid #eef1ef"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">Invoice {{eInvoiceRef}} · issued {{eInvoiceDate}}</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">{{eFeeBreakdown}}</span></div><span style="margin-left:auto;font:600 26px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{eFeeText}}</span></div>
+<div style="display:flex;flex-direction:column;gap:2px;padding:13px 15px;background:#f7f9f8;border:1px solid #eef1ef;border-radius:9px"><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8b9a92;letter-spacing:.08em">PAY INTO · CORONATION TRUSTEES COLLECTION ACCOUNT</span><span style="font:600 20px 'IBM Plex Mono',monospace;color:#12201a;letter-spacing:.04em">{{eInvoiceVirtual}}</span><span style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#5b6b63">Trustee-controlled escrow account · your account identifies the payment automatically</span></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button onClick="{{eConfirmPayment}}" style="flex:1;min-width:210px;min-height:52px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;font:600 15px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">{{ePayLabel}}</button></div>
 <sc-if value="{{eProcessing}}" hint-placeholder-val="{{false}}"><div style="display:flex;align-items:center;gap:10px"><div style="width:18px;height:18px;flex:none;border-radius:50%;border:2.5px solid #CFE3D5;border-top-color:#2E7D52;animation:spin .8s linear infinite"></div><span style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:#5b6b63">Matching your payment against the Trustee Collection Account…</span></div></sc-if>
 </div>
 </div>
@@ -244,40 +240,13 @@
 </sc-if>
 
 <sc-if value="{{ePhasePaid}}" hint-placeholder-val="{{false}}">
-<div style="flex:1;padding:{{eBodyPad}};display:flex;justify-content:center">
-<div style="width:100%;max-width:620px;display:flex;flex-direction:column;gap:15px">
-<div style="background:#234D3A;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:11px;align-items:flex-start">
-<div style="display:flex;align-items:center;gap:11px"><div style="width:44px;height:44px;flex:none;border-radius:50%;background:#10B981;display:flex;align-items:center;justify-content:center;font:600 21px 'IBM Plex Sans',sans-serif;color:#234D3A">✓</div><span style="display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:13px;background:rgba(16,185,129,.16);border:1px solid rgba(16,185,129,.5);font:600 11.5px 'IBM Plex Mono',monospace;color:#E8B23D;letter-spacing:.04em">SETTLED</span></div>
-<span style="font:600 22px 'IBM Plex Sans',sans-serif;color:#fff;letter-spacing:-0.01em">Payment Confirmed: {{eFeeText}} EOI Received</span>
-<span style="font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#cfe3d8">Your administrative fee has been received in the Trustee-controlled Collection Account and matched to your application.</span>
-</div>
-
-<div style="background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:13px">
-<div style="display:flex;align-items:center;gap:9px"><span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">Transaction summary</span><span style="margin-left:auto;font:600 17px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{eFeeText}}</span></div>
-<div style="display:flex;flex-direction:column;gap:1px">
-<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><span style="width:146px;flex:none;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Invoice ID</span><span style="flex:1;min-width:0;font:600 13.5px 'IBM Plex Mono',monospace;color:#2E7D52">{{eInvoice}}</span></div>
-<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><span style="width:146px;flex:none;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Full legal name</span><span style="flex:1;min-width:0;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{eLegalName}}</span></div>
-<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><span style="width:146px;flex:none;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Acquisition stream</span><span style="flex:1;min-width:0;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{eStream}}</span></div>
-<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><span style="width:146px;flex:none;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Shop type &amp; quantity</span><span style="flex:1;min-width:0;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{eShopLine}}</span></div>
-<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><span style="width:146px;flex:none;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Fee basis</span><span style="flex:1;min-width:0;font:500 13.5px 'IBM Plex Mono',monospace;color:#12201a">{{eFeeBreakdown}}</span></div>
-<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><span style="width:146px;flex:none;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Settled</span><span style="flex:1;min-width:0;font:500 13.5px 'IBM Plex Mono',monospace;color:#12201a">{{ePaidAt}} · {{eChannelPaid}}</span></div>
-<div style="display:flex;gap:12px;padding:10px 0"><span style="width:146px;flex:none;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">Registry Queue ID</span><span style="flex:1;min-width:0;font:600 13.5px 'IBM Plex Mono',monospace;color:#12201a">{{eQueueId}}</span></div>
-</div>
-</div>
-
-<div style="background:#EFF6F1;border:1px solid #CFE3D5;border-left:3px solid #2E7D52;border-radius:11px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start">
-<div style="width:26px;height:26px;flex:none;border-radius:50%;background:#2E7D52;color:#fff;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans',sans-serif">i</div>
-<span style="flex:1;font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#2f5e48">Your Expression of Interest is now attached to your applicant account. Track every stage — shortlisting, funding, site layout and registry — from your dashboard.</span>
-</div>
-<div style="background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:13px">
-<span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">What happens next?</span>
-<sc-for list="{{eNextSteps}}" as="n" hint-placeholder-count="5"><div style="display:flex;gap:11px;align-items:flex-start"><div style="width:22px;height:22px;flex:none;border-radius:50%;background:{{n.bg}};color:{{n.color}};display:flex;align-items:center;justify-content:center;font:600 11px 'IBM Plex Mono',monospace">{{n.n}}</div><div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{n.title}}</span><span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#5b6b63">{{n.body}}</span></div></div></sc-for>
-<div style="padding:11px 13px;background:#FDF3E2;border:1px solid #F2DDB0;border-left:3px solid #D9922E;border-radius:8px"><span style="font:500 12.5px/1.55 'IBM Plex Sans',sans-serif;color:#8A5A1E">Submitting an Expression of Interest does not constitute allocation of a unit.</span></div>
-</div>
-<div style="display:flex;gap:10px;flex-wrap:wrap">
-<button onClick="{{eGoDashboard}}" style="flex:1;min-width:200px;height:52px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;font:600 15px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Go to my Dashboard →</button>
-<button onClick="{{eNewApplication}}" style="height:52px;padding:0 16px;border:1px solid #c9d3cd;border-radius:10px;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">New application</button>
-</div>
+<div style="flex:1;padding:{{eBodyPad}};display:flex;justify-content:center;align-items:center">
+<div style="width:100%;max-width:440px;background:#fff;border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.14)">
+<div style="width:56px;height:56px;flex:none;border-radius:50%;background:#E3F2E8;display:flex;align-items:center;justify-content:center;font:600 26px 'IBM Plex Sans',sans-serif;color:#2F8557">✓</div>
+<span style="font:600 22px 'IBM Plex Sans',sans-serif;color:#12201a;letter-spacing:-0.01em">Payment Successful</span>
+<span style="font:400 13.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">Invoice {{eInvoice}} settled — {{eFeeText}} received into the Trustee Collection Account. Your Expression of Interest is confirmed and awaiting shortlist.</span>
+<button onClick="{{receiptOpen}}" style="width:100%;min-height:50px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Download EOI Receipt (PDF)</button>
+<button onClick="{{eGoDashboard}}" style="width:100%;min-height:48px;border:1px solid #c9d3cd;border-radius:10px;display:flex;align-items:center;justify-content:center;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">Continue to Dashboard →</button>
 </div>
 </div>
 </sc-if>
@@ -291,9 +260,38 @@
 <span style="font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#cfe3d8">Tell us what you are interested in. The information provided here will help us understand your requirements and guide your application through the next stages.</span>
 </div>
 
-<sc-if value="{{eNeedsIdentity}}" hint-placeholder-val="{{false}}">
-<div style="background:#fff;border:2px solid #2E7D52;border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:14px;animation:reveal .18s ease-out">
-<span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a">Step 1 · Verify your identity</span>
+<sc-if value="{{eStep1On}}" hint-placeholder-val="{{true}}">
+<div style="background:#fff;border:2px solid #2E7D52;border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:15px;animation:reveal .18s ease-out">
+<div style="display:flex;align-items:center;gap:9px"><span style="font:600 12px 'IBM Plex Mono',monospace;color:#2E7D52">STEP 1 OF 4</span><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a;margin-left:6px">How are you applying?</span></div>
+<div style="display:flex;gap:11px;flex-direction:{{eChoiceDir}}">
+<sc-for list="{{eParticipationCards}}" as="c" hint-placeholder-count="3"><button onClick="{{c.go}}" style="flex:1;border:{{c.border}};background:{{c.bg}};border-radius:11px;padding:15px 16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;min-height:112px;cursor:pointer"><div style="display:flex;align-items:center;gap:10px;width:100%"><div style="width:20px;height:20px;flex:none;border-radius:50%;border:2px solid {{c.ring}};display:flex;align-items:center;justify-content:center"><div style="width:10px;height:10px;border-radius:50%;background:{{c.dot}}"></div></div><span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{c.label}}</span><span style="margin-left:auto;font:500 10.5px 'IBM Plex Mono',monospace;color:{{c.tagColor}};background:{{c.tagBg}};padding:3px 7px;border-radius:5px">{{c.tag}}</span></div><span style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#5b6b63;text-align:left">{{c.body}}</span></button></sc-for>
+</div>
+<div style="padding:11px 13px;background:#f7f9f8;border:1px solid #eef1ef;border-radius:9px"><span style="font:400 12.5px/1.55 'IBM Plex Sans',sans-serif;color:#5b6b63">You can apply independently. Belonging to an association is optional and does not affect your eligibility.</span></div>
+<sc-if value="{{eShowAssoc}}" hint-placeholder-val="{{false}}">
+<div style="display:flex;flex-direction:column;gap:9px;padding-top:12px;border-top:1px solid #eef1ef;animation:reveal .18s ease-out">
+<span style="font:600 14.5px 'IBM Plex Sans',sans-serif;color:#12201a">Select association / union</span>
+<div style="position:relative">
+<input value="{{eAssocQuery}}" onChange="{{eOnAssocQuery}}" onFocus="{{eOpenAssoc}}" placeholder="Search or select your association" style="height:52px;border:1px solid {{eAssocBorder}};border-radius:10px;background:#fff;padding:0 16px;font:400 14.5px 'IBM Plex Sans',sans-serif;color:#12201a;width:100%"/>
+<sc-if value="{{eAssocOpen}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;top:56px;left:0;right:0;background:#fff;border:1px solid #d5dcd8;border-radius:10px;box-shadow:0 12px 30px rgba(11,61,38,.17);padding:6px;display:flex;flex-direction:column;z-index:20;max-height:250px;overflow:auto">
+<sc-for list="{{eAssocOptions}}" as="a" hint-placeholder-count="5"><button onClick="{{a.go}}" style="min-height:46px;display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:7px;background:{{a.bg}};width:100%;cursor:pointer"><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:500 14px 'IBM Plex Sans',sans-serif;color:{{a.color}}">{{a.label}}</span><span style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#8b9a92">{{a.sub}}</span></div><span style="font:600 12px;color:#2E7D52">{{a.tick}}</span></button></sc-for>
+<sc-if value="{{eAssocNone}}" hint-placeholder-val="{{false}}"><div style="padding:14px 11px;font:400 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">No association matches that search. You can still apply independently.</div></sc-if>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{eAssocError}}" hint-placeholder-val="{{false}}"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#C1443A">Please select your association or choose Individual.</span></sc-if>
+<span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#6b7c73">Your association is recorded as affiliation only. It does not guarantee or influence allocation.</span>
+</div>
+</sc-if>
+<button onClick="{{eStep1Continue}}" style="height:50px;background:{{eStep1ContinueBg}};border-radius:10px;display:flex;align-items:center;justify-content:center;font:600 14.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Continue →</button>
+</div>
+</sc-if>
+
+<sc-if value="{{eStep2On}}" hint-placeholder-val="{{false}}">
+<div style="background:#fff;border:2px solid #2E7D52;border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:15px;animation:reveal .18s ease-out">
+<div style="display:flex;align-items:center;gap:9px"><span style="font:600 12px 'IBM Plex Mono',monospace;color:#2E7D52">STEP 2 OF 4</span><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a;margin-left:6px">Verify your identity</span></div>
+
+<sc-if value="{{eStepKycIndividual}}" hint-placeholder-val="{{true}}">
 <span style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#5b6b63">Verify with your BVN or NIN to continue. We'll use this to confirm your name, phone and email — no need to type them again.</span>
 <div style="display:flex;gap:10px;flex-wrap:wrap"><sc-for list="{{kycIdTypes}}" as="t" hint-placeholder-count="2"><button onClick="{{t.go}}" style="flex:1;min-width:150px;min-height:56px;border:{{t.border}};background:{{t.bg}};border-radius:9px;display:flex;align-items:center;gap:11px;padding:0 14px;cursor:pointer"><div style="width:18px;height:18px;flex:none;border-radius:50%;border:2px solid {{t.ring}};display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border-radius:50%;background:{{t.dot}}"></div></div><div style="display:flex;flex-direction:column"><span style="font:600 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{t.label}}</span><span style="font:400 11px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{t.sub}}</span></div></button></sc-for></div>
 <div style="display:flex;flex-direction:column;gap:5px">
@@ -309,69 +307,19 @@
 <div style="width:40px;height:40px;flex:none;border-radius:9px;background:#234D3A;color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif">{{kycFoundInitials}}</div>
 <div style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font:600 15px 'IBM Plex Sans',sans-serif;color:#12201a">{{kycFoundName}}</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{kycFoundGender}} · born {{kycFoundDob}} · {{kycFoundPhone}}</span></div>
 </div>
-<div style="display:flex;gap:9px;flex-wrap:wrap"><button onClick="{{kycConfirmIdentity}}" style="flex:1;min-width:150px;min-height:42px;background:#2E7D52;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 12.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Yes, this is me</button><button onClick="{{kycRejectIdentity}}" style="min-height:42px;padding:0 13px;border:1px solid #c9d3cd;border-radius:8px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">Not me</button></div>
+<button onClick="{{kycConfirmIdentity}}" style="min-height:42px;background:#2E7D52;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 12.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Confirm Identity →</button>
 </div>
 </sc-if>
-</div>
-</sc-if>
-
-<sc-if value="{{eIdentityBadgeOn}}" hint-placeholder-val="{{false}}">
-<div style="background:#fff;border:1px solid #CFE3D5;border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:12px">
-<div style="width:36px;height:36px;flex:none;border-radius:9px;background:#E3F2E8;color:#2F8557;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif">✓</div>
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:600 14px 'IBM Plex Sans',sans-serif;color:#12201a">{{eIdentityName}}</span><span style="font:500 11.5px 'IBM Plex Sans',sans-serif;color:#2F8557">{{eIdentityBadgeLabel}}</span></div>
-</div>
 </sc-if>
 
-<div style="background:#fff;border:1px solid {{a1Border}};border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:15px;opacity:{{a1Opacity}}">
-<button onClick="{{a1Toggle}}" style="display:flex;align-items:center;gap:11px;width:100%;cursor:pointer"><div style="width:26px;height:26px;flex:none;border-radius:50%;background:{{a1BadgeBg}};color:{{a1BadgeColor}};display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Mono',monospace">{{a1Badge}}</div><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a">How are you applying?</span><span style="margin-left:auto;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">{{a1Summary}}</span></button>
-<sc-if value="{{a1Open}}" hint-placeholder-val="{{false}}">
-<div style="display:flex;flex-direction:column;gap:13px;animation:reveal .18s ease-out">
-<div style="display:flex;gap:11px;flex-direction:{{eChoiceDir}}">
-<sc-for list="{{eParticipationCards}}" as="c" hint-placeholder-count="2"><button onClick="{{c.go}}" style="flex:1;border:{{c.border}};background:{{c.bg}};border-radius:11px;padding:15px 16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;min-height:112px;cursor:pointer"><div style="display:flex;align-items:center;gap:10px;width:100%"><div style="width:20px;height:20px;flex:none;border-radius:50%;border:2px solid {{c.ring}};display:flex;align-items:center;justify-content:center"><div style="width:10px;height:10px;border-radius:50%;background:{{c.dot}}"></div></div><span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{c.label}}</span><span style="margin-left:auto;font:500 10.5px 'IBM Plex Mono',monospace;color:{{c.tagColor}};background:{{c.tagBg}};padding:3px 7px;border-radius:5px">{{c.tag}}</span></div><span style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#5b6b63;text-align:left">{{c.body}}</span></button></sc-for>
-</div>
-<div style="padding:11px 13px;background:#f7f9f8;border:1px solid #eef1ef;border-radius:9px"><span style="font:400 12.5px/1.55 'IBM Plex Sans',sans-serif;color:#5b6b63">You can apply independently. Belonging to an association is optional and does not affect your eligibility.</span></div>
-<sc-if value="{{eShowAssoc}}" hint-placeholder-val="{{false}}">
-<div style="display:flex;flex-direction:column;gap:9px;padding-top:12px;border-top:1px solid #eef1ef;animation:reveal .18s ease-out">
-<span style="font:600 14.5px 'IBM Plex Sans',sans-serif;color:#12201a">Select association / union</span>
-<div style="position:relative">
-<input value="{{eAssocQuery}}" onChange="{{eOnAssocQuery}}" onFocus="{{eOpenAssoc}}" placeholder="Search or select your association" style="height:52px;border:1px solid {{eAssocBorder}};border-radius:10px;background:#fff;padding:0 16px;font:400 14.5px 'IBM Plex Sans',sans-serif;color:#12201a;width:100%"/>
-<sc-if value="{{eAssocOpen}}" hint-placeholder-val="{{false}}">
-<div style="position:absolute;top:56px;left:0;right:0;background:#fff;border:1px solid #d5dcd8;border-radius:10px;box-shadow:0 12px 30px rgba(11,61,38,.17);padding:6px;display:flex;flex-direction:column;z-index:20;max-height:250px;overflow:auto">
-<sc-for list="{{eAssocOptions}}" as="a" hint-placeholder-count="5"><button onClick="{{a.go}}" style="min-height:46px;display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:7px;background:{{a.bg}};width:100%;cursor:pointer"><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:500 14px 'IBM Plex Sans',sans-serif;color:{{a.color}}">{{a.label}}</span><span style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#8b9a92">{{a.sub}}</span></div><span style="font:600 12px;color:#2E7D52">{{a.tick}}</span></button></sc-for>
-<sc-if value="{{eAssocNone}}" hint-placeholder-val="{{false}}"><div style="padding:14px 11px;font:400 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">No association matches that search. You can still apply independently.</div></sc-if>
-</div>
-</sc-if>
-</div>
-<sc-if value="{{eAssocError}}" hint-placeholder-val="{{false}}"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#C1443A">Please select your association or choose Independent.</span></sc-if>
-<span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#6b7c73">Your association is recorded as affiliation only. It does not guarantee or influence allocation.</span>
-</div>
-</sc-if>
-</div>
-</sc-if>
-</div>
-
-<div style="background:#fff;border:1px solid {{a2Border}};border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:15px;opacity:{{a2Opacity}}">
-<button onClick="{{a2Toggle}}" style="display:flex;align-items:center;gap:11px;width:100%;cursor:pointer"><div style="width:26px;height:26px;flex:none;border-radius:50%;background:{{a2BadgeBg}};color:{{a2BadgeColor}};display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Mono',monospace">{{a2Badge}}</div><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a">Purchase type</span><span style="margin-left:auto;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">{{a2Summary}}</span></button>
-<sc-if value="{{a2Open}}" hint-placeholder-val="{{false}}">
-<div style="display:flex;flex-direction:column;gap:13px;animation:reveal .18s ease-out">
-<span style="font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:#5b6b63">Who will the unit ultimately be held by?</span>
-<div style="display:flex;gap:10px;flex-direction:{{eChoiceDir}}">
-<sc-for list="{{ePurchaseCards}}" as="c" hint-placeholder-count="2"><button onClick="{{c.go}}" style="flex:1;min-height:62px;border:{{c.border}};background:{{c.bg}};border-radius:10px;display:flex;align-items:center;gap:12px;padding:0 16px;cursor:pointer"><div style="width:20px;height:20px;flex:none;border-radius:50%;border:2px solid {{c.ring}};display:flex;align-items:center;justify-content:center"><div style="width:10px;height:10px;border-radius:50%;background:{{c.dot}}"></div></div><div style="display:flex;flex-direction:column"><span style="font:600 15px 'IBM Plex Sans',sans-serif;color:#12201a">{{c.label}}</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{c.sub}}</span></div></button></sc-for>
-</div>
-<sc-if value="{{eShowBusiness}}" hint-placeholder-val="{{false}}">
-<div style="display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid #eef1ef;animation:reveal .18s ease-out">
-<span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">Business / company name</span>
-<input value="{{eBusiness}}" onChange="{{eOnBusiness}}" placeholder="As registered with CAC" style="height:52px;border:1px solid {{eBizBorder}};border-radius:10px;background:#fff;padding:0 16px;font:400 15px 'IBM Plex Sans',sans-serif;color:#12201a;width:100%"/>
-<sc-if value="{{eBizError}}" hint-placeholder-val="{{false}}"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#C1443A">Please enter the name of the business or company applying.</span></sc-if>
-
-<sc-if value="{{eEntityKycOn}}" hint-placeholder-val="{{false}}">
-<div style="display:flex;flex-direction:column;gap:9px;padding-top:10px;border-top:1px solid #eef1ef">
+<sc-if value="{{eStepKycBusiness}}" hint-placeholder-val="{{false}}">
+<span style="font:400 13px/1.55 'IBM Plex Sans',sans-serif;color:#5b6b63">Enter your Tax Identification Number (TIN). We'll validate it and retrieve your registered business details automatically.</span>
 <span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">Tax Identification Number (TIN) <span style="color:#C1443A">*</span></span>
 <sc-if value="{{entityTinFound}}" hint-placeholder-val="{{false}}">
 <div style="border:1px solid #CFE3D5;background:#EFF6F1;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px">
 <div style="display:flex;align-items:center;gap:8px"><div style="width:18px;height:18px;flex:none;border-radius:50%;background:#2F8557;color:#fff;display:flex;align-items:center;justify-content:center;font:600 10px">✓</div><span style="font:600 12.5px 'IBM Plex Sans',sans-serif;color:#1F5E3E">TIN verified</span></div>
 <div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{entityTinName}}</span><span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">Registered {{entityTinRegDate}} · {{entityTinOffice}} · TIN {{entityTinVal}}</span></div>
-<button onClick="{{entityRejectTin}}" style="align-self:flex-start;min-height:34px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">Change TIN</button>
+<div style="display:flex;gap:9px;flex-wrap:wrap"><button onClick="{{entityConfirmTin}}" style="flex:1;min-width:150px;min-height:38px;background:#2E7D52;border-radius:7px;display:flex;align-items:center;justify-content:center;font:600 12.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Confirm Company Details →</button><button onClick="{{entityRejectTin}}" style="min-height:38px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">Change TIN</button></div>
 </div>
 </sc-if>
 <sc-if value="{{entityTinNotFound}}" hint-placeholder-val="{{true}}">
@@ -379,27 +327,20 @@
 <sc-if value="{{entityTinLoading}}" hint-placeholder-val="{{false}}"><div style="display:flex;align-items:center;gap:10px"><div style="width:18px;height:18px;flex:none;border-radius:50%;border:2.5px solid #CFE3D5;border-top-color:#2E7D52;animation:spin .8s linear infinite"></div><span style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:#5b6b63">Validating TIN… matching against the FIRS TIN registry</span></div></sc-if>
 <sc-if value="{{entityTinError}}" hint-placeholder-val="{{false}}"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#C1443A">Enter a valid TIN (10–14 digits) to continue — this step is required for Business / Company applications.</span></sc-if>
 </sc-if>
-<div style="display:flex;flex-direction:column;gap:6px;padding-top:6px">
-<span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">CAC Registration Number (RC / BN) <span style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#8b9a92">Optional</span></span>
-<input value="{{eEntityCac}}" onChange="{{eOnEntityCac}}" placeholder="e.g. RC 1234567" style="height:48px;border:1px solid #c9d3cd;border-radius:9px;background:#fff;padding:0 14px;font:400 14.5px 'IBM Plex Sans',sans-serif;color:#12201a;width:100%"/>
-<span style="font:400 11.5px/1.5 'IBM Plex Sans',sans-serif;color:#8b9a92">You can proceed without your CAC number now and update it later in your profile settings before final deed generation.</span>
-</div>
-</div>
+<span style="font:400 11.5px/1.5 'IBM Plex Sans',sans-serif;color:#8b9a92">We validate your TIN against the FIRS registry and retrieve your registered business name, operating address and verification status automatically.</span>
 </sc-if>
-</div>
-</sc-if>
-</div>
-</sc-if>
-</div>
 
-<div style="background:#fff;border:1px solid {{a3Border}};border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:15px;opacity:{{a3Opacity}}">
-<button onClick="{{a3Toggle}}" style="display:flex;align-items:center;gap:11px;width:100%;cursor:pointer"><div style="width:26px;height:26px;flex:none;border-radius:50%;background:{{a3BadgeBg}};color:{{a3BadgeColor}};display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Mono',monospace">{{a3Badge}}</div><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a">What are you interested in?</span><span style="margin-left:auto;font:400 12.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">{{a3Summary}}</span></button>
-<sc-if value="{{a3Open}}" hint-placeholder-val="{{false}}">
-<div style="display:flex;flex-direction:column;gap:15px;animation:reveal .18s ease-out">
+<button onClick="{{eBackToStep1}}" style="align-self:flex-start;min-height:42px;padding:0 16px;border:1px solid #c9d3cd;border-radius:9px;font:500 13px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">← Back</button>
+</div>
+</sc-if>
+
+<sc-if value="{{eStep3On}}" hint-placeholder-val="{{false}}">
+<div style="background:#fff;border:2px solid #2E7D52;border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:15px;animation:reveal .18s ease-out">
+<div style="display:flex;align-items:center;gap:9px"><span style="font:600 12px 'IBM Plex Mono',monospace;color:#2E7D52">STEP 3 OF 4</span><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a;margin-left:6px">What are you interested in?</span></div>
 <div style="display:flex;flex-direction:column;gap:9px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">Shop / unit category</span>
-<div style="display:flex;gap:10px;flex-wrap:wrap"><sc-for list="{{eCategories}}" as="c" hint-placeholder-count="4"><button onClick="{{c.go}}" style="flex:1;min-width:{{eCatMinW}};min-height:66px;border:{{c.border}};background:{{c.bg}};border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;align-items:flex-start;cursor:pointer"><div style="display:flex;align-items:center;gap:8px;width:100%"><div style="width:18px;height:18px;flex:none;border-radius:50%;border:2px solid {{c.ring}};display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:{{c.dot}}"></div></div><span style="font:600 14.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{c.label}}</span></div><span style="font:400 12px/1.45 'IBM Plex Sans',sans-serif;color:#5b6b63;text-align:left">{{c.sub}}</span></button></sc-for></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><sc-for list="{{eCategories}}" as="c" hint-placeholder-count="3"><button onClick="{{c.go}}" style="flex:1;min-width:{{eCatMinW}};min-height:78px;border:{{c.border}};background:{{c.bg}};border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;align-items:flex-start;cursor:pointer"><div style="display:flex;align-items:center;gap:8px;width:100%"><div style="width:18px;height:18px;flex:none;border-radius:50%;border:2px solid {{c.ring}};display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;border-radius:50%;background:{{c.dot}}"></div></div><span style="font:600 14.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{c.label}}</span></div><span style="font:400 12px/1.45 'IBM Plex Sans',sans-serif;color:#5b6b63;text-align:left">{{c.sub}}</span><span title="Indicative base valuation. Final asset price locked upon down payment and allocation." style="font:600 13px 'IBM Plex Mono',monospace;color:#12201a">{{c.price}}</span></button></sc-for></div>
 <sc-if value="{{eCatError}}" hint-placeholder-val="{{false}}"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#C1443A">Please select the type of unit you are interested in.</span></sc-if>
-<span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#6b7c73">Available categories, specifications and pricing will be displayed based on the project configuration.</span>
+<span style="font:400 11.5px/1.5 'IBM Plex Sans',sans-serif;color:#8b9a92">Indicative base valuation. Final asset price locked upon down payment and allocation.</span>
 </div>
 <div style="display:flex;flex-direction:column;gap:9px;padding-top:12px;border-top:1px solid #eef1ef">
 <span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">Quantity required</span>
@@ -413,37 +354,29 @@
 <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#EFF6F1;border:1px solid #CFE3D5;border-radius:9px"><div style="display:flex;flex-direction:column;gap:1px"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#2f5e48">Administrative fee due</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#3f7b5f">{{eFeeBreakdown}}</span></div><span style="margin-left:auto;font:600 19px 'IBM Plex Mono',monospace;color:#12201a;font-variant-numeric:tabular-nums">{{eFeeText}}</span></div>
 <sc-if value="{{eQtyError}}" hint-placeholder-val="{{false}}"><span style="font:500 12.5px 'IBM Plex Sans',sans-serif;color:#C1443A">Please enter a valid quantity between 1 and 5.</span></sc-if>
 </div>
+<div style="display:flex;gap:10px"><button onClick="{{eBackToStep2}}" style="min-height:50px;padding:0 16px;border:1px solid #c9d3cd;border-radius:10px;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">← Back</button><button onClick="{{eStep3Continue}}" style="flex:1;height:50px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;font:600 14.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Continue to Review →</button></div>
 </div>
 </sc-if>
-</div>
 
-<div style="background:{{eReviewBg}};border:1px solid {{eReviewBorder}};border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:14px">
-<div style="display:flex;align-items:center;gap:11px"><div style="width:26px;height:26px;flex:none;border-radius:50%;background:{{a5BadgeBg}};color:{{a5BadgeColor}};display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Mono',monospace">4</div><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a">Review your interest</span></div>
-<sc-if value="{{eReviewReady}}" hint-placeholder-val="{{false}}">
-<div style="display:flex;flex-direction:column;gap:2px;animation:reveal .18s ease-out">
+<sc-if value="{{eStep4On}}" hint-placeholder-val="{{false}}">
+<div style="background:#fff;border:2px solid #2E7D52;border-radius:12px;padding:{{eCardPad}};display:flex;flex-direction:column;gap:14px;animation:reveal .18s ease-out">
+<div style="display:flex;align-items:center;gap:9px"><span style="font:600 12px 'IBM Plex Mono',monospace;color:#2E7D52">STEP 4 OF 4</span><span style="font:600 {{eSecTitle}} 'IBM Plex Sans',sans-serif;color:#12201a;margin-left:6px">Review your interest</span></div>
+<div style="display:flex;flex-direction:column;gap:2px">
+<div style="display:flex;align-items:center;gap:8px;padding-bottom:8px"><span title="Identity verified via official registry" style="font:400 11.5px 'IBM Plex Sans',sans-serif;color:#8b9a92">🔒 Identity verified via official registry</span><button onClick="{{toggleIdentityReveal}}" style="margin-left:auto;height:30px;padding:0 11px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 11.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;cursor:pointer">{{eIdRevealLabel}}</button></div>
 <sc-for list="{{eReviewRows}}" as="r" hint-placeholder-count="6">
 <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #eef1ef">
 <span style="width:{{eReviewLabelW}};flex:none;font:400 13px 'IBM Plex Sans',sans-serif;color:#6b7c73">{{r.label}}</span>
-<span style="flex:1;min-width:0;font:500 14px 'IBM Plex Sans',sans-serif;color:#12201a">{{r.value}}</span>
+<span style="flex:1;min-width:0;font:500 14px 'IBM Plex Sans',sans-serif;color:#12201a;filter:{{r.blurFilter}};transition:filter .15s">{{r.value}}</span>
 <sc-if value="{{r.editable}}" hint-placeholder-val="{{true}}"><button onClick="{{r.edit}}" style="flex:none;height:32px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;font:500 12.5px 'IBM Plex Sans',sans-serif;color:#2E7D52;background:#fff;cursor:pointer">Edit</button></sc-if>
-<sc-if value="{{r.locked}}" hint-placeholder-val="{{false}}"><span title="From your applicant account — update it from Profile" style="flex:none;display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 10px;border-radius:7px;background:#EFF6F1;border:1px solid #CFE3D5;font:500 11.5px 'IBM Plex Sans',sans-serif;color:#2f5e48">🔒 From account</span></sc-if>
 </div>
 </sc-for>
-<sc-if value="{{eLockedNote}}" hint-placeholder-val="{{false}}"><span style="font:400 11.5px/1.5 'IBM Plex Sans',sans-serif;color:#6b7c73;padding-top:9px">Your name and contact details come from your applicant account. Update them anytime from Profile.</span></sc-if>
 </div>
 <sc-if value="{{eDesk}}" hint-placeholder-val="{{true}}">
-<button onClick="{{eSubmit}}" style="height:52px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:9px;font:600 15.5px 'IBM Plex Sans',sans-serif;color:#fff;width:100%;cursor:pointer">{{eCtaLabel}} →</button>
+<div style="display:flex;gap:10px"><button onClick="{{eBackToStep3}}" style="min-height:52px;padding:0 16px;border:1px solid #c9d3cd;border-radius:10px;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">← Back</button><button onClick="{{eSubmit}}" style="flex:1;height:52px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:9px;font:600 15.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">{{eCtaLabel}} →</button></div>
 <span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#6b7c73;text-align:center">Submitting an Expression of Interest does not constitute allocation of a unit.</span>
 </sc-if>
-</sc-if>
-<sc-if value="{{eReviewPending}}" hint-placeholder-val="{{true}}">
-<div style="display:flex;flex-direction:column;gap:9px">
-<span style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#6b7c73">Your summary appears here once the sections above are complete.</span>
-<sc-for list="{{ePendingChecks}}" as="c" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:9px"><div style="width:16px;height:16px;flex:none;border-radius:50%;background:{{c.bg}};display:flex;align-items:center;justify-content:center;font:600 9px;color:#fff">{{c.icon}}</div><span style="font:400 13px 'IBM Plex Sans',sans-serif;color:{{c.color}}">{{c.label}}</span></div></sc-for>
 </div>
 </sc-if>
-</div>
-</div>
 
 <sc-if value="{{eDesk}}" hint-placeholder-val="{{true}}">
 <div style="width:330px;flex:none;display:flex;flex-direction:column;gap:13px">
@@ -459,6 +392,7 @@
 </div>
 </div>
 </sc-if>
+</div>
 </div>
 </sc-if>
 
@@ -541,7 +475,7 @@
 <div style="background:#fff;border:2px solid #2E7D52;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
 <span style="font:600 17px 'IBM Plex Sans',sans-serif;color:#12201a">Start your Expression of Interest</span>
 <span style="font:400 13.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">Tell us what you're interested in and pay the ₦50,000-per-unit administrative fee to activate full application tracking.</span>
-<button onClick="{{goEoi}}" style="min-height:48px;padding:0 20px;background:#2E7D52;border-radius:9px;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Start Expression of Interest →</button>
+<button onClick="{{goEoi}}" style="min-height:48px;padding:0 20px;background:#2E7D52;border-radius:9px;display:flex;align-items:center;justify-content:center;font:600 14px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Begin Expression of Interest (EOI) →</button>
 </div>
 </sc-if>
 
@@ -557,8 +491,14 @@
 </sc-for>
 </div>
 </div>
+<div style="background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:19px 21px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 15px 'IBM Plex Sans',sans-serif;color:#12201a">Document Vault</span>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><div style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">EOI Invoice</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">{{pInvoice}}</span></div><button onClick="{{receiptOpen}}" style="margin-left:auto;height:32px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#2E7D52;cursor:pointer">Download</button></div>
+<div style="display:flex;align-items:center;gap:12px;padding:10px 0"><div style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">EOI Payment Receipt</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">Settled {{pPaidAt}}</span></div><button onClick="{{receiptOpen}}" style="margin-left:auto;height:32px;padding:0 12px;border:1px solid #c9d3cd;border-radius:7px;background:#fff;font:500 12px 'IBM Plex Sans',sans-serif;color:#2E7D52;cursor:pointer">Download</button></div>
+</div>
+</div>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
-<button onClick="{{receiptOpen}}" style="flex:1;min-width:230px;min-height:48px;background:#2E7D52;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px;font:600 13.5px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Download Official EOI Receipt (PDF)</button>
 <button onClick="{{pGoEoiStatus}}" style="flex:1;min-width:190px;min-height:48px;border:1px solid #c9d3cd;border-radius:10px;display:flex;align-items:center;justify-content:center;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">View My EOI</button>
 <button onClick="{{pGoHelp}}" style="flex:1;min-width:190px;min-height:48px;border:1px solid #c9d3cd;border-radius:10px;display:flex;align-items:center;justify-content:center;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">Ask AI Assistant</button>
 </div>
@@ -636,6 +576,12 @@
 </sc-if>
 </div>
 </sc-if>
+</sc-if>
+<sc-if value="{{s.isAllocationPending}}" hint-placeholder-val="{{false}}">
+<div style="display:flex;flex-direction:column;gap:8px;padding:11px 12px;background:#FDF3E2;border:1px solid #F2DDB0;border-radius:9px">
+<span style="font:500 11.5px/1.5 'IBM Plex Sans',sans-serif;color:#8A5A1E">(internal / demo tool) Project administration confirms facility availability and dispatches readiness notifications via Email, SMS and the Applicant Dashboard before stall selection unlocks.</span>
+<button onClick="{{confirmFacilityReadinessAction}}" style="align-self:flex-start;min-height:38px;padding:0 14px;background:#2E7D52;border-radius:7px;display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Sans',sans-serif;color:#fff;cursor:pointer">Confirm availability &amp; notify (demo)</button>
+</div>
 </sc-if>
 </div>
 </sc-if>
@@ -854,7 +800,7 @@
 <div style="display:flex;align-items:center"><span style="font:600 15px 'IBM Plex Sans',sans-serif;color:#12201a">Ownership structure</span><span style="margin-left:auto;font:400 11.5px 'IBM Plex Sans',sans-serif;color:#6b7c73">{{pCoCountLabel}}</span></div>
 <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><div style="width:32px;height:32px;flex:none;border-radius:9px;background:#234D3A;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Sans',sans-serif">{{pPrimaryInitials}}</div><div style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{pProfileName}}</span><span style="font:400 11px 'IBM Plex Sans',sans-serif;color:#8b9a92">Primary allottee</span></div></div>
 <sc-for list="{{pCoAllottees}}" as="co" hint-placeholder-count="1">
-<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><div style="width:32px;height:32px;flex:none;border-radius:9px;background:#f2f5f3;color:#3d4b44;display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Sans',sans-serif">{{co.initials}}</div><div style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{co.name}}</span><span style="font:400 11px 'IBM Plex Sans',sans-serif;color:#8b9a92">Co-allottee · Verified via {{co.idType}} · {{co.phone}}</span></div><button onClick="{{co.remove}}" style="flex:none;height:28px;padding:0 10px;border:1px solid #c9d3cd;border-radius:6px;background:#fff;font:500 11px 'IBM Plex Sans',sans-serif;color:#C1443A;cursor:pointer">Remove</button></div>
+<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f1"><div style="width:32px;height:32px;flex:none;border-radius:9px;background:#f2f5f3;color:#3d4b44;display:flex;align-items:center;justify-content:center;font:600 12px 'IBM Plex Sans',sans-serif">{{co.initials}}</div><div style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{co.name}}</span><span style="font:400 11px 'IBM Plex Sans',sans-serif;color:#8b9a92">Co-allottee · Verified via {{co.idType}} {{co.idMasked}} · {{co.phone}}</span></div><button onClick="{{co.remove}}" style="flex:none;height:28px;padding:0 10px;border:1px solid #c9d3cd;border-radius:6px;background:#fff;font:500 11px 'IBM Plex Sans',sans-serif;color:#C1443A;cursor:pointer">Remove</button></div>
 </sc-for>
 
 <sc-if value="{{pHasSubdivisionFee}}" hint-placeholder-val="{{false}}">
@@ -944,6 +890,7 @@
 <sc-if value="{{rHasBusiness}}" hint-placeholder-val="{{false}}"><span style="font:400 12.5px 'IBM Plex Sans',sans-serif;color:#3d4b44">{{rBusiness}}</span></sc-if>
 <span style="font:400 12px 'IBM Plex Mono',monospace;color:#5b6b63">{{rPhone}}</span>
 <span style="font:400 12px 'IBM Plex Sans',sans-serif;color:#5b6b63">{{rEmail}}</span>
+<sc-if value="{{rHasIdentity}}" hint-placeholder-val="{{false}}"><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8b9a92">Identity verified · {{rIdentityType}} {{rIdentityMasked}}</span></sc-if>
 </div>
 </div>
 <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:9px">
@@ -2512,6 +2459,17 @@ function abbr(n) {
   return money(n);
 }
 function pad(n, w) { return String(n).padStart(w, "0"); }
+function maskIdentityNumber(val) {
+  if (val === null || val === undefined || val === "") return "—";
+  const digits = String(val).replace(/\D/g, "");
+  if (!digits) return "—";
+  if (digits.length !== 11) {
+    console.warn("[maskIdentityNumber] expected an 11-digit BVN/NIN, got " + digits.length + " digit(s): " + digits);
+    if (digits.length <= 6) return digits;
+    return digits.slice(0, 3) + "*".repeat(digits.length - 6) + digits.slice(-3);
+  }
+  return digits.slice(0, 3) + "*****" + digits.slice(-3);
+}
 
 function buildStore() {
   const r = rng(20260915);
@@ -2752,7 +2710,6 @@ function buildStore() {
 }
 
 const ASSOCIATIONS = [
-  { id: "independent", label: "I am applying independently", sub: "No association affiliation", solo: true },
   { id: "ariaria", label: "Ariaria Market Traders Association", sub: "Ariaria International Market" },
   { id: "lepmaas", label: "LEPMAAS", sub: "Leather Products Manufacturers Association", cap: 1000 },
   { id: "umlt", label: "UML/T", sub: "United Market Leaders and Traders", cap: 1000 },
@@ -2761,8 +2718,8 @@ const ASSOCIATIONS = [
 ];
 const CATEGORIES = [
   { id: "retail", label: "Retail Shop", sub: "Customer-facing trading unit", unitPrice: 18450000 },
-  { id: "wholesale", label: "Wholesale", sub: "Bulk supply and distribution", unitPrice: 10725000 },
-  { id: "industrial", label: "Industrial", sub: "Light manufacturing space", unitPrice: 14500000 },
+  { id: "wholesale", label: "Wholesale Shop", sub: "Bulk supply and distribution", unitPrice: 10725000 },
+  { id: "industrial", label: "Industrial Shop", sub: "Light manufacturing space", unitPrice: 14500000 },
   { id: "warehouse", label: "Warehouse", sub: "Storage and logistics", unitPrice: 55300000 }
 ];
 const UTILITY_CATEGORIES = [
@@ -2843,8 +2800,8 @@ const JOURNEY_STAGES = [
     body: (rec) => (rec && rec.fundingType ? "Funding route: " + (rec.fundingType === "bank_financed" ? "Bank guarantee (bank-financed cohort)" : "Self-funded (20–30% down payment)") + "." : "Indicate whether you are self-funded or part of a bank-financed cohort."),
     next: () => "Funding must be confirmed before site layout and stall selection." },
   { key: "allocation", label: "Site Layout & Stall Selection",
-    statusOf: (rec) => (!rec || rec.fundingStatus !== "confirmed" ? "locked" : rec.allocationStatus === "rescinded" ? "attention" : rec.allocationStatus === "allocated" ? "done" : "current"),
-    body: (rec) => (!rec ? "Not started." : rec.allocationStatus === "rescinded" ? "Allocation rescinded following fundamental default. " + (rec.rescission && rec.rescission.reallocated ? "Refund payout due " + rec.rescission.payoutDueDate + "." : "Refund of " + money((rec.rescission || {}).refundAmount || 0) + " pending unit re-allocation.") : rec.allocatedUnit ? "Unit " + rec.allocatedUnit.unitId + ", " + rec.allocatedUnit.block + " selected." : "Choose your unit on the interactive site layout once funding is confirmed."),
+    statusOf: (rec) => (!rec || rec.shortlistStatus !== "shortlisted" || rec.fundingStatus !== "confirmed") ? "locked" : rec.allocationStatus === "rescinded" ? "attention" : rec.allocationStatus === "allocated" ? "done" : (rec.facilityAvailabilityConfirmed && rec.readinessNotified) ? "current" : "locked",
+    body: (rec) => (!rec ? "Not started." : rec.allocationStatus === "rescinded" ? "Allocation rescinded following fundamental default. " + (rec.rescission && rec.rescission.reallocated ? "Refund payout due " + rec.rescission.payoutDueDate + "." : "Refund of " + money((rec.rescission || {}).refundAmount || 0) + " pending unit re-allocation.") : rec.allocatedUnit ? "Unit " + rec.allocatedUnit.unitId + ", " + rec.allocatedUnit.block + " selected." : (rec.shortlistStatus === "shortlisted" && rec.fundingStatus === "confirmed" && !(rec.facilityAvailabilityConfirmed && rec.readinessNotified)) ? "Awaiting facility availability confirmation and readiness notification from project administration." : "Choose your unit on the interactive site layout once funding is confirmed and facility readiness is notified."),
     next: () => "Stall selection is followed by registry inscription." },
   { key: "registry", label: "Registry Inscription & Certificate",
     statusOf: (rec) => (!rec || (rec.allocationStatus !== "allocated" && rec.allocationStatus !== "rescinded") ? "locked" : rec.allocationStatus === "rescinded" ? "locked" : (rec.subdivisionFee && rec.subdivisionFee.status === "Pending") ? "attention" : rec.registryStatus === "inscribed" ? "done" : "current"),
@@ -2910,7 +2867,7 @@ const DEMO_SCENARIOS = [
   { id: "B", label: "Adaeze Nwachukwu", sub: "Association member · Ariaria Market Traders Association",
     account: { id: "APP-10002", email: "adaeze.demo@acsc.ng", phone: "0803 550 8890", name: "Adaeze Nwachukwu", createdAt: "11 Sep 2026", status: "active" },
     base: { ref: "ACSC-EOI-2609-100020-01", sid: "LEP-100020", virtual: "9931 100020 01", invoice: "ACSC-EOI-2026-10020", queueId: "RQ-2026-1002",
-      category: "Wholesale", qty: 2, association: "Ariaria Market Traders Association", purchase: "Individual", business: null,
+      category: "Wholesale Shop", qty: 2, association: "Ariaria Market Traders Association", purchase: "Individual", business: null,
       stream: "Ariaria Market Traders Association Cohort", channel: "Bank App", submittedAt: "11 Sep 2026 10:02", paidAt: "11 Sep 2026 10:05",
       kycIdentity: { name: "Adaeze Nwachukwu", idType: "NIN", idNumber: "19004455667", dob: "02 Jul 1990", gender: "Female" } },
     lifecycle: [
@@ -2921,7 +2878,7 @@ const DEMO_SCENARIOS = [
   { id: "C", label: "Okafor & Sons Ltd", sub: "Registered Company · Corporate applicant",
     account: { id: "APP-10003", email: "corporate.demo@acsc.ng", phone: "0803 660 1122", name: "Ngozi Eze", createdAt: "12 Sep 2026", status: "active" },
     base: { ref: "ACSC-EOI-2609-100030-01", sid: "LEP-100030", virtual: "9931 100030 01", invoice: "ACSC-EOI-2026-10030", queueId: "RQ-2026-1003",
-      category: "Industrial", qty: 1, association: "Independent", purchase: "Business / Company", business: "Okafor & Sons Ltd",
+      category: "Industrial Shop", qty: 1, association: "Independent", purchase: "Business / Company", business: "Okafor & Sons Ltd",
       stream: "Independent Offtaker", channel: "Bank Branch", submittedAt: "12 Sep 2026 08:44", paidAt: "12 Sep 2026 08:47",
       kycIdentity: { name: "Ngozi Eze", idType: "BVN", idNumber: "22099887766", dob: "19 Nov 1979", gender: "Female" },
       entityKycStatus: "verified", entityIdentity: { name: "Okafor & Sons Ltd", idType: "TIN", idNumber: "21004455661", entityType: "Company", regDate: "04 Mar 2019" }, entityCac: "RC 1402233",
@@ -2939,12 +2896,12 @@ const DEMO_SCENARIOS = [
 class Component extends DCLogic {
   state = {
     publicRoute: null, eoiView: "desktop", eoiLang: "English", eoiVoice: false,
-    eIdentity: null,
+    eIdentity: null, eIdentityRevealed: false,
     eParticipation: null, eAssoc: null, eAssocQuery: "", eAssocOpen: false,
-    ePurchase: null, eBusiness: "", eCategory: null, eQty: 1, eOpen: 1, eTouched: {},
-    eEntityIdentity: null, eEntityCac: "",
+    eCategory: null, eQty: 1, eStep: 1, eTouched: {},
+    eEntityIdentity: null,
     eoiRecord: null, portalQuery: "", portalError: "", portalRecord: null, eoiToast: null,
-    ePhase: null, ePayChannel: "transfer", eOtp: "", eOtpError: "", eResend: 0, eEmailEditing: false, eEmailDraft: "", pubHistory: [],
+    ePhase: null, eInvoiceRef: "", eInvoiceVirtual: "", eOtp: "", eOtpError: "", eResend: 0, eEmailEditing: false, eEmailDraft: "", pubHistory: [],
     portalStage: "lookup", portalId: "", portalOtp: "", portalOtpError: "", portalAuthed: false, portalResend: 0,
     pAccount: null, pAuthed: false, applicantAccounts: [],
     pAuthEmail: "", pAuthPassword: "", pPendingAuthEmail: "", pPendingAuthPassword: "", pAuthPhase: "email", pAuthOtp: "", pAuthOtpError: "", pAuthResend: 0,
@@ -3113,7 +3070,11 @@ class Component extends DCLogic {
 
   beginPayment() {
     if (!this.eAll()) { this.submitEoi(); return; }
-    this.setState({ ePhase: "pay" });
+    const serial = pad(Math.floor(Math.random() * 900000) + 100000, 6);
+    const invoice = "ACSC-EOI-2026-" + pad(Math.floor(Math.random() * 90000) + 10000, 5);
+    const virtual = "9931 " + serial + " 01";
+    this.setState({ ePhase: "invoiced", eInvoiceRef: invoice, eInvoiceVirtual: virtual });
+    this.eSay("Invoice " + invoice + " generated");
   }
 
   confirmPayment() {
@@ -3140,18 +3101,18 @@ class Component extends DCLogic {
     const S = this.state, kl = S.kycLookup;
     if (!kl || kl.status !== "found") return;
     const identity = { name: kl.name, idType: S.kycIdType, idNumber: S.kycIdNumber, dob: kl.dob, gender: kl.gender, email: kl.email, phone: kl.phone };
-    this.setState((s) => ({ eIdentity: identity, pAccount: Object.assign({}, s.pAccount, { name: identity.name, phone: identity.phone }) }));
+    this.setState((s) => ({ eIdentity: identity, pAccount: Object.assign({}, s.pAccount, { name: identity.name, phone: identity.phone }), eStep: 3 }));
     this.eSay("Identity verified via " + S.kycIdType);
   }
   rejectEoiIdentity() { this.setState({ kycIdNumber: "", kycLookup: null }); this.eSay("Re-enter your identification number"); }
+  toggleIdentityReveal() { this.setState((s) => ({ eIdentityRevealed: !s.eIdentityRevealed })); }
 
   lookupEntityTin(tin) {
     clearTimeout(this._letk);
     this.setState({ entityTinLookup: { status: "loading" } });
     this._letk = setTimeout(() => {
-      const S = this.state;
-      const name = (S.eBusiness || "").trim() || "Registered entity";
       const seed = Number(tin.slice(-4)) || 1;
+      const name = LAST[seed % LAST.length] + " & " + LAST[(seed * 3) % LAST.length] + " " + TRADES[(seed * 7) % TRADES.length] + " Ltd";
       const regDate = pad((seed % 28) + 1, 2) + " " + ["Jan", "Mar", "May", "Jul", "Sep", "Nov"][seed % 6] + " 20" + pad(10 + (seed % 13), 2);
       const identity = { name, idType: "TIN", idNumber: tin, entityType: "Company", regDate };
       this.setState({ entityTinLookup: { status: "found", name, regDate }, eEntityIdentity: identity });
@@ -3159,6 +3120,10 @@ class Component extends DCLogic {
     }, 1100);
   }
   rejectEoiEntityTin() { this.setState({ entityTin: "", entityTinLookup: null, eEntityIdentity: null }); this.eSay("Re-enter the TIN"); }
+  confirmEoiEntityTin() {
+    if (!this.state.eEntityIdentity) return;
+    this.setState({ eStep: 3 });
+  }
 
   toggleDisclaimerCheck() { this.setState((s) => ({ disclaimerChecked: !s.disclaimerChecked })); }
   acceptDisclaimer() {
@@ -3190,6 +3155,17 @@ class Component extends DCLogic {
       return { eoiRecord: updated, portalRecord: updated };
     });
     this.eSay("Funding confirmed");
+  }
+
+  confirmFacilityReadiness() {
+    const rec = this.state.eoiRecord;
+    if (!rec) return;
+    this.setState((s) => {
+      const updated = Object.assign({}, s.eoiRecord, { facilityAvailabilityConfirmed: true, readinessNotified: true });
+      return { eoiRecord: updated, portalRecord: updated };
+    });
+    this.logAudit("Facility availability confirmed & readiness notifications dispatched", "Applicant · " + rec.sid, "Awaiting availability", "Confirmed · notified via Email, SMS, Dashboard");
+    this.eSay("Facility availability confirmed — readiness notifications sent");
   }
 
   assocQuotaLocked(assocId) {
@@ -3345,18 +3321,25 @@ class Component extends DCLogic {
     this.eSay("Unit marked as re-allocated — 60-day refund payout timer started");
   }
 
-  eIdentityDone() { return !!this.state.eIdentity; }
-  eS1() { const s = this.state; return !!s.eParticipation && (s.eParticipation !== "association" || !!s.eAssoc); }
-  eS2() { const s = this.state; if (!s.ePurchase) return false; if (s.ePurchase !== "business") return true; return s.eBusiness.trim().length > 1 && !!s.eEntityIdentity; }
-  eQtyValid() { const q = Number(this.state.eQty); return Number.isInteger(q) && q >= 1 && q <= 5; }
-  eS3() { return !!this.state.eCategory && this.eQtyValid(); }
-  eAll() { return this.eIdentityDone() && this.eS1() && this.eS2() && this.eS3(); }
-  eUnlocked(n) { if (!this.eIdentityDone()) return false; return n === 1 ? true : n === 2 ? this.eS1() : n === 3 ? this.eS2() : this.eAll(); }
-  eOpenSec(n) {
-    if (!this.eUnlocked(n)) { this.eSay("Complete the section above first"); return; }
-    this.setState((s) => ({ eOpen: s.eOpen === n ? 0 : n, eAssocOpen: false }));
+  eTrackValid() {
+    const s = this.state;
+    if (!s.eParticipation) return false;
+    if (s.eParticipation === "association") return !!s.eAssoc;
+    return true;
   }
-  eAdvance(from) { const n = from + 1; if (n <= 3 && this.eUnlocked(n)) this.setState({ eOpen: n }); else if (n > 3) this.setState({ eOpen: 0 }); }
+  eKycValid() {
+    const s = this.state;
+    return s.eParticipation === "business" ? !!s.eEntityIdentity : !!s.eIdentity;
+  }
+  eQtyValid() { const q = Number(this.state.eQty); return Number.isInteger(q) && q >= 1 && q <= 5; }
+  eShopValid() { return !!this.state.eCategory && this.eQtyValid(); }
+  eAll() { return this.eTrackValid() && this.eKycValid() && this.eShopValid(); }
+  eGoStep(n) {
+    if (n >= 2 && !this.eTrackValid()) { this.eSay(this.state.eParticipation === "association" ? "Select your association to continue" : "Choose how you are applying first"); return; }
+    if (n >= 3 && !this.eKycValid()) { this.eSay("Complete identity verification first"); return; }
+    if (n >= 4 && !this.eShopValid()) { this.setState((s) => ({ eTouched: Object.assign({}, s.eTouched, { cat: true, qty: true }) })); this.eSay("Choose a category and quantity first"); return; }
+    this.setState({ eStep: n, eAssocOpen: false });
+  }
 
   findAccountByEmail(email) {
     const S = this.state, v = (email || "").trim().toLowerCase();
@@ -3381,6 +3364,7 @@ class Component extends DCLogic {
       fundingStatus: "not_started", fundingType: null,
       membershipStatus: scen.base.association === "Independent" ? null : "pending",
       shortlistStatus: "in_review", allocationStatus: "locked", allocatedUnit: null, registryStatus: "locked",
+      facilityAvailabilityConfirmed: false, readinessNotified: false,
       payments: [{ id: scen.base.ref, label: "EOI Administrative Fee", amount, status: "Paid", paidAt: scen.base.paidAt, channel: scen.base.channel, invoice: scen.base.invoice }],
       documents: [], coAllottees: [], subdivisionFee: null,
       milestoneOverdue: [0, 0, 0, 0, 0], repricingOverrides: {}, rescission: null, utilityPayments: {}
@@ -3591,10 +3575,10 @@ class Component extends DCLogic {
   startAnotherEoi() {
     this.setState((s) => ({
       eoiRecords: s.eoiRecord ? (s.eoiRecords || []).concat([s.eoiRecord]) : (s.eoiRecords || []),
-      eoiRecord: null, portalRecord: null, ePhase: null,
-      eParticipation: null, eAssoc: null, eAssocQuery: "", ePurchase: null, eBusiness: "", eCategory: null, eQty: 1, eOpen: 1, eTouched: {},
-      eIdentity: null, kycIdType: "BVN", kycIdNumber: "", kycLookup: null,
-      eEntityIdentity: null, entityTin: "", entityTinLookup: null, eEntityCac: "",
+      eoiRecord: null, portalRecord: null, ePhase: null, eInvoiceRef: "", eInvoiceVirtual: "",
+      eParticipation: null, eAssoc: null, eAssocQuery: "", eCategory: null, eQty: 1, eStep: 1, eTouched: {},
+      eIdentity: null, eIdentityRevealed: false, kycIdType: "BVN", kycIdNumber: "", kycLookup: null,
+      eEntityIdentity: null, entityTin: "", entityTinLookup: null,
       eFundingRoute: null, eDepositAmount: "", eDepositError: ""
     }));
     this.pubGo({ publicRoute: "eoi" });
@@ -3602,10 +3586,9 @@ class Component extends DCLogic {
 
   submitEoi() {
     const S = this.state;
-    if (!this.eIdentityDone()) { this.eSay("Verify your identity before continuing"); return; }
-    if (!this.eS1()) { this.setState((s) => ({ eOpen: 1, eTouched: Object.assign({}, s.eTouched, { assoc: true }) })); this.eSay("Tell us how you are applying"); return; }
-    if (!this.eS2()) { this.setState((s) => ({ eOpen: 2, eTouched: Object.assign({}, s.eTouched, { biz: true }) })); this.eSay("Complete the purchase type"); return; }
-    if (!this.eS3()) { this.setState((s) => ({ eOpen: 3, eTouched: Object.assign({}, s.eTouched, { cat: true, qty: true }) })); this.eSay("Choose a category and quantity"); return; }
+    if (!this.eTrackValid()) { this.setState({ eStep: 1 }); this.eSay("Tell us how you are applying"); return; }
+    if (!this.eKycValid()) { this.setState({ eStep: 2 }); this.eSay("Complete identity verification before continuing"); return; }
+    if (!this.eShopValid()) { this.setState((s) => ({ eStep: 3, eTouched: Object.assign({}, s.eTouched, { cat: true, qty: true }) })); this.eSay("Choose a category and quantity"); return; }
 
     const assoc = ASSOCIATIONS.find((a) => a.id === S.eAssoc);
     const cat = CATEGORIES.find((c) => c.id === S.eCategory);
@@ -3613,16 +3596,16 @@ class Component extends DCLogic {
     const serial = pad(Math.floor(Math.random() * 900000) + 100000, 6);
     const sid = (isUml ? "UML-" : "LEP-") + serial;
     const ref = "ACSC-EOI-2609-" + serial + "-01";
-    const virtual = "9931 " + serial + " 01";
+    const virtual = S.eInvoiceVirtual || ("9931 " + serial + " 01");
     const acct = S.pAccount;
-    const personName = acct.name;
-    const displayName = S.ePurchase === "business" ? S.eBusiness.trim() : personName;
+    const personName = (acct.name && acct.name.trim()) ? acct.name : (S.eParticipation === "business" && S.eEntityIdentity ? S.eEntityIdentity.name : "");
+    const displayName = S.eParticipation === "business" ? (S.eEntityIdentity ? S.eEntityIdentity.name : personName) : personName;
     const now = new Date();
     const hhmm = pad(now.getHours(), 2) + ":" + pad(now.getMinutes(), 2);
     const amount = EOI_FEE * Number(S.eQty);
-    const invoice = "ACSC-EOI-2026-" + pad(Math.floor(Math.random() * 90000) + 10000, 5);
+    const invoice = S.eInvoiceRef || ("ACSC-EOI-2026-" + pad(Math.floor(Math.random() * 90000) + 10000, 5));
     const paidAt = "16 Sep 2026 " + hhmm;
-    const channel = S.ePayChannel === "app" ? "Bank App" : S.ePayChannel === "branch" ? "Bank Branch" : "Bank Transfer";
+    const channel = "Trustee Account Transfer";
 
     const record = {
       ref, sid, virtual, name: displayName, personName, email: acct.email || "—", phone: acct.phone || "—",
@@ -3630,16 +3613,17 @@ class Component extends DCLogic {
       paidAt, channel,
       stream: S.eParticipation === "association" && assoc ? assoc.label + " Cohort" : "Independent Offtaker",
       association: S.eParticipation === "association" && assoc ? assoc.label : "Independent",
-      purchase: S.ePurchase === "business" ? "Business / Company" : "Individual",
-      business: S.ePurchase === "business" ? S.eBusiness.trim() : null,
+      purchase: S.eParticipation === "business" ? "Business / Company" : "Individual",
+      business: S.eParticipation === "business" && S.eEntityIdentity ? S.eEntityIdentity.name : null,
       category: cat ? cat.label : "—", qty: Number(S.eQty), amount, unitFee: EOI_FEE,
       submittedAt: "15 Sep 2026 " + hhmm, stage: 1, kyc: "Verified",
       kycStatus: "verified", kycIdentity: S.eIdentity,
-      entityKycStatus: S.ePurchase === "business" ? "verified" : null, entityIdentity: S.ePurchase === "business" ? S.eEntityIdentity : null,
-      entityCac: S.ePurchase === "business" ? ((S.eEntityCac || "").trim() || null) : null,
+      entityKycStatus: S.eParticipation === "business" ? "verified" : null, entityIdentity: S.eParticipation === "business" ? S.eEntityIdentity : null,
+      entityCac: null,
       fundingStatus: "not_started", fundingType: null,
       membershipStatus: (S.eParticipation === "association" && assoc) ? "pending" : null,
       shortlistStatus: "in_review", allocationStatus: "locked", allocatedUnit: null, registryStatus: "locked",
+      facilityAvailabilityConfirmed: false, readinessNotified: false,
       payments: [{ id: ref, label: "EOI Administrative Fee", amount, status: "Paid", paidAt, channel, invoice }],
       documents: [], coAllottees: [], subdivisionFee: null,
       milestoneOverdue: [0, 0, 0, 0, 0], repricingOverrides: {}, rescission: null, utilityPayments: {}
@@ -3852,7 +3836,8 @@ class Component extends DCLogic {
         open: S.pJourneyOpen === i,
         toggle: () => this.setState((s) => ({ pJourneyOpen: s.pJourneyOpen === i ? null : i })),
         line: i === JOURNEY_STAGES.length - 1 ? "transparent" : (status === "done" ? "#2F8557" : "#e4eae7"),
-        isFunding: stg.key === "funding"
+        isFunding: stg.key === "funding",
+        isAllocationPending: !!(stg.key === "allocation" && rec && rec.shortlistStatus === "shortlisted" && rec.fundingStatus === "confirmed" && rec.allocationStatus !== "allocated" && rec.allocationStatus !== "rescinded" && !(rec.facilityAvailabilityConfirmed && rec.readinessNotified))
       };
     });
 
@@ -3863,7 +3848,7 @@ class Component extends DCLogic {
     const eoiStatusLabel = !rec ? "Draft" :
       rec.shortlistStatus === "shortlisted" ? "Shortlisted" :
       rec.shortlistStatus === "not_shortlisted" ? "Not Selected" :
-      rec.shortlistStatus === "in_review" ? "Under Review" : "Submitted";
+      rec.shortlistStatus === "in_review" ? "EOI Confirmed - Awaiting Shortlist" : "Submitted";
     const eoiStatusKey = !rec ? "locked" : rec.shortlistStatus === "not_shortlisted" ? "attention" : rec.shortlistStatus === "in_review" ? "current" : "done";
     const eoiStatusChip = STATUS_CHIP[eoiStatusKey];
 
@@ -3923,6 +3908,7 @@ class Component extends DCLogic {
       eDepositAmountVal: S.eDepositAmount, onDepositAmount: (ev) => this.onDepositAmount(ev),
       eDepositError: S.eDepositError,
       confirmFundingAction: () => this.confirmFunding(),
+      confirmFacilityReadinessAction: () => this.confirmFacilityReadiness(),
       fundingRouteChosen: !!S.eFundingRoute,
       spaDisclaimerOpen: !!S.eFundingRoute && !S.spaDisclaimerAccepted,
       showDepositAmountInput: !!S.eFundingRoute && S.spaDisclaimerAccepted,
@@ -4043,13 +4029,13 @@ class Component extends DCLogic {
       pProfileKyc: rec ? rec.kycIdentity : null, pProfileHasKyc: !!(rec && rec.kycIdentity),
       pProfileKycLabel: rec && rec.kycIdentity ? "Identity verified via " + rec.kycIdentity.idType + " — " + rec.kycIdentity.name : "",
       pProfileIdLabel: rec && rec.kycIdentity ? rec.kycIdentity.idType : "BVN / NIN",
-      pProfileIdValue: rec && rec.kycIdentity ? "•••••••" + String(rec.kycIdentity.idNumber).slice(-4) + " (verified)" : "Not on file",
+      pProfileIdValue: rec && rec.kycIdentity ? maskIdentityNumber(rec.kycIdentity.idNumber) + " (verified)" : "Not on file",
       pProfileHasEntityKyc: !!(rec && rec.entityIdentity), pProfileEntityKycLabel: rec && rec.entityIdentity ? "Entity verified via TIN — " + rec.entityIdentity.name : "",
 
       pCoCountLabel: (rec && rec.coAllottees ? rec.coAllottees.length : 0) + " of 2 co-allottees",
       pPrimaryInitials: S.pAccount && S.pAccount.name ? S.pAccount.name.split(" ").map((w) => w[0]).join("").slice(0, 2) : "",
       pCoAllottees: (rec && rec.coAllottees ? rec.coAllottees : []).map((co) => ({
-        name: co.name, phone: co.phone, idType: co.idType,
+        name: co.name, phone: co.phone, idType: co.idType, idMasked: maskIdentityNumber(co.idNumber),
         initials: co.name.split(" ").map((w) => w[0]).join("").slice(0, 2),
         remove: () => this.removeCoAllottee(co.id)
       })),
@@ -4561,11 +4547,6 @@ class Component extends DCLogic {
         const assoc = ASSOCIATIONS.find((a) => a.id === S.eAssoc);
         const cat = CATEGORIES.find((c) => c.id === S.eCategory);
         const rec = S.eoiRecord;
-        const sec = (n, done) => {
-          const un = this.eUnlocked(n), op = S.eOpen === n && un;
-          return { border: op ? "#2E7D52" : (done ? "#CFE3D5" : "#dfe5e2"), opacity: un ? "1" : "0.55", badgeBg: un ? "#2E7D52" : "#eef1ef", badgeColor: un ? "#ffffff" : "#8b9a92", badge: done ? "✓" : String(n), open: op };
-        };
-        const a1 = sec(1, this.eS1()), a2 = sec(2, this.eS2()), a3 = sec(3, this.eS3());
         const radio = (on) => ({ border: on ? "2px solid #2E7D52" : "1px solid #c9d3cd", bg: on ? "#EFF6F1" : "#ffffff", ring: on ? "#2E7D52" : "#c9d3cd", dot: on ? "#2E7D52" : "transparent" });
         const q = String(S.eAssocQuery || "").toLowerCase();
         const filtered = ASSOCIATIONS.filter((a) => !q || a.label.toLowerCase().indexOf(q) >= 0 || a.sub.toLowerCase().indexOf(q) >= 0);
@@ -4614,11 +4595,6 @@ class Component extends DCLogic {
           eFeeBreakdown: (Number(S.eQty) || 1) + " × " + money(EOI_FEE) + " per unit of interest",
           eFeeMulti: (Number(S.eQty) || 1) > 1,
 
-          eNeedsIdentity: !this.eIdentityDone(),
-          eIdentityBadgeOn: this.eIdentityDone(),
-          eIdentityName: S.eIdentity ? S.eIdentity.name : "",
-          eIdentityBadgeLabel: S.eIdentity ? "Identity Verified via " + S.eIdentity.idType : "",
-
           kycIdTypes: ["BVN", "NIN"].map((t) => Object.assign({}, radio(S.kycIdType === t), {
             label: t, sub: t === "BVN" ? "Bank Verification Number" : "National Identity Number",
             go: () => { if (t === S.kycIdType) return; clearTimeout(this._lk); this.setState({ kycIdType: t, kycIdNumber: "", kycLookup: null }); this.eSay("Enter your " + t + " to verify"); }
@@ -4642,7 +4618,7 @@ class Component extends DCLogic {
           kycConfirmIdentity: () => this.confirmEoiIdentity(),
           kycRejectIdentity: () => this.rejectEoiIdentity(),
 
-          eEntityKycOn: S.ePurchase === "business",
+          eEntityKycOn: S.eParticipation === "business",
           entityTinVal: S.entityTin,
           entityOnTin: (ev) => {
             const v = String(ev.target.value).replace(/[^0-9]/g, "").slice(0, 14);
@@ -4658,15 +4634,16 @@ class Component extends DCLogic {
           entityTinRegDate: S.eEntityIdentity ? S.eEntityIdentity.regDate : (S.entityTinLookup ? S.entityTinLookup.regDate : ""),
           entityTinOffice: "FIRS Aba Area Office",
           entityRejectTin: () => this.rejectEoiEntityTin(),
-          eEntityCac: S.eEntityCac, eOnEntityCac: (ev) => this.setState({ eEntityCac: ev.target.value }),
+          entityConfirmTin: () => this.confirmEoiEntityTin(),
 
-          a1Border: a1.border, a1Opacity: a1.opacity, a1BadgeBg: a1.badgeBg, a1BadgeColor: a1.badgeColor, a1Badge: a1.badge, a1Open: a1.open,
-          a1Toggle: () => this.eOpenSec(1),
-          a1Summary: a1.open ? "" : (S.eParticipation ? (S.eParticipation === "association" ? (assoc ? assoc.label : "Association") : "Individual") : "Not chosen"),
+          eStep1On: S.eStep === 1, eStep2On: S.eStep === 2, eStep3On: S.eStep === 3, eStep4On: S.eStep === 4,
+          eStepKycBusiness: S.eParticipation === "business",
+          eStepKycIndividual: S.eParticipation !== "business",
           eParticipationCards: [
             { id: "individual", label: "Individual", body: "Applying independently for a shop or warehouse.", tag: "Most common", tagBg: "#E3F2E8", tagColor: "#2F8557" },
-            { id: "association", label: "Association / Union", body: "Applying as a member of a recognised traders' association or union.", tag: "Optional", tagBg: "#eef1ef", tagColor: "#5b6b63" }
-          ].map((c) => Object.assign({}, radio(S.eParticipation === c.id), { label: c.label, body: c.body, tag: c.tag, tagBg: c.tagBg, tagColor: c.tagColor, go: () => { this.setState({ eParticipation: c.id, eAssoc: c.id === "individual" ? null : S.eAssoc, eAssocQuery: c.id === "individual" ? "" : S.eAssocQuery, eAssocOpen: false }); if (c.id === "individual") setTimeout(() => this.eAdvance(1), 220); } })),
+            { id: "association", label: "Association / Union", body: "Applying as a member of a recognised traders' association or union.", tag: "Optional", tagBg: "#eef1ef", tagColor: "#5b6b63" },
+            { id: "business", label: "Business / Company", body: "Applying on behalf of a registered business or company.", tag: "TIN required", tagBg: "#FDF3E2", tagColor: "#8A5A1E" }
+          ].map((c) => Object.assign({}, radio(S.eParticipation === c.id), { label: c.label, body: c.body, tag: c.tag, tagBg: c.tagBg, tagColor: c.tagColor, go: () => this.setState({ eParticipation: c.id, eAssoc: c.id === "individual" ? null : S.eAssoc, eAssocQuery: c.id === "individual" ? "" : S.eAssocQuery, eAssocOpen: false }) })),
           eShowAssoc: S.eParticipation === "association",
           eAssocQuery: S.eAssocQuery, eAssocOpen: S.eAssocOpen,
           eOnAssocQuery: (ev) => this.setState({ eAssocQuery: ev.target.value, eAssocOpen: true, eAssoc: null }),
@@ -4676,30 +4653,19 @@ class Component extends DCLogic {
             return {
               label: a.label, sub: locked ? "Cohort full — join the waitlist or apply independently" : a.sub,
               tick: S.eAssoc === a.id ? "✓" : "", bg: S.eAssoc === a.id ? "#f1f7f3" : "transparent",
-              color: locked ? "#8b9a92" : (a.solo ? "#2E7D52" : "#12201a"),
-              go: locked ? () => this.eSay(a.label + " has reached its Phase 1 allocation cap of " + a.cap + " units") : () => { this.setState((s) => ({ eAssoc: a.id, eAssocQuery: a.label, eAssocOpen: false, eTouched: Object.assign({}, s.eTouched, { assoc: true }) })); setTimeout(() => this.eAdvance(1), 220); }
+              color: locked ? "#8b9a92" : "#12201a",
+              go: locked ? () => this.eSay(a.label + " has reached its Phase 1 allocation cap of " + a.cap + " units") : () => this.setState((s) => ({ eAssoc: a.id, eAssocQuery: a.label, eAssocOpen: false, eTouched: Object.assign({}, s.eTouched, { assoc: true }) }))
             };
           }),
           eAssocNone: filtered.length === 0,
           eAssocBorder: S.eTouched.assoc && S.eParticipation === "association" && !S.eAssoc ? "#C1443A" : "#c9d3cd",
           eAssocError: !!S.eTouched.assoc && S.eParticipation === "association" && !S.eAssoc,
+          eShowBusiness: S.eParticipation === "business",
+          eStep1Continue: () => this.eGoStep(2),
+          eStep1ContinueBg: this.eTrackValid() ? "#2E7D52" : "#a9b7ae",
+          eBackToStep1: () => this.eGoStep(1),
 
-          a2Border: a2.border, a2Opacity: a2.opacity, a2BadgeBg: a2.badgeBg, a2BadgeColor: a2.badgeColor, a2Badge: a2.badge, a2Open: a2.open,
-          a2Toggle: () => this.eOpenSec(2),
-          a2Summary: a2.open ? "" : (S.ePurchase ? (S.ePurchase === "business" ? (S.eBusiness || "Business / Company") : "Individual") : "Not chosen"),
-          ePurchaseCards: [
-            { id: "individual", label: "Individual", sub: "Held in your personal name" },
-            { id: "business", label: "Business / Company", sub: "Held by a registered entity" }
-          ].map((c) => Object.assign({}, radio(S.ePurchase === c.id), { label: c.label, sub: c.sub, go: () => { this.setState({ ePurchase: c.id }); if (c.id === "individual") setTimeout(() => this.eAdvance(2), 220); } })),
-          eShowBusiness: S.ePurchase === "business", eBusiness: S.eBusiness,
-          eOnBusiness: (ev) => this.setState({ eBusiness: ev.target.value }),
-          eBizBorder: S.eTouched.biz && S.ePurchase === "business" && S.eBusiness.trim().length < 2 ? "#C1443A" : "#c9d3cd",
-          eBizError: !!S.eTouched.biz && S.ePurchase === "business" && S.eBusiness.trim().length < 2,
-
-          a3Border: a3.border, a3Opacity: a3.opacity, a3BadgeBg: a3.badgeBg, a3BadgeColor: a3.badgeColor, a3Badge: a3.badge, a3Open: a3.open,
-          a3Toggle: () => this.eOpenSec(3),
-          a3Summary: a3.open ? "" : (cat ? cat.label + " · " + S.eQty : "Not chosen"),
-          eCategories: CATEGORIES.map((c) => Object.assign({}, radio(S.eCategory === c.id), { label: c.label, sub: c.sub, go: () => this.setState((s) => ({ eCategory: c.id, eTouched: Object.assign({}, s.eTouched, { cat: true }) })) })),
+          eCategories: CATEGORIES.filter((c) => c.id !== "retail").map((c) => Object.assign({}, radio(S.eCategory === c.id), { label: c.label, sub: c.sub, price: money(c.unitPrice), go: () => this.setState((s) => ({ eCategory: c.id, eTouched: Object.assign({}, s.eTouched, { cat: true }) })) })),
           eCatError: !!S.eTouched.cat && !S.eCategory,
           eQty: String(S.eQty),
           eOnQty: (ev) => { const raw = String(ev.target.value).replace(/[^0-9]/g, "").slice(0, 2); this.setState((s) => ({ eQty: raw === "" ? "" : Number(raw), eTouched: Object.assign({}, s.eTouched, { qty: true }) })); },
@@ -4708,64 +4674,50 @@ class Component extends DCLogic {
           eQtyUpColor: Number(S.eQty) >= 5 ? "#c2ccc6" : "#2E7D52", eQtyDownColor: Number(S.eQty) <= 1 ? "#c2ccc6" : "#2E7D52",
           eQtyBorder: S.eTouched.qty && !this.eQtyValid() ? "#C1443A" : "#c9d3cd",
           eQtyError: !!S.eTouched.qty && !this.eQtyValid(),
+          eStep3Continue: () => this.eGoStep(4),
+          eBackToStep2: () => this.eGoStep(2),
 
-          a5BadgeBg: this.eAll() ? "#2E7D52" : "#eef1ef", a5BadgeColor: this.eAll() ? "#ffffff" : "#8b9a92",
-          eReviewBg: this.eAll() ? "#ffffff" : "#fbfcfb", eReviewBorder: this.eAll() ? "#CFE3D5" : "#e4eae7",
-          eReviewReady: this.eAll(), eReviewPending: !this.eAll(),
-          eReviewRows: [
-            { label: "Full name", value: (S.pAccount && S.pAccount.name) ? S.pAccount.name : "—", locked: true },
-            { label: "Contact", value: (S.pAccount && (S.pAccount.phone || S.pAccount.email)) ? ((S.pAccount.phone || "—") + " · " + (S.pAccount.email || "—")) : "—", locked: true },
-            { label: "Identity", value: S.eIdentity ? "Verified via " + S.eIdentity.idType : "—", locked: true },
-            { label: "Applicant type", value: S.eParticipation === "association" ? "Association member" : "Individual", to: 1 },
-            { label: "Association", value: S.eParticipation === "association" ? (assoc ? assoc.label : "—") : "Independent", to: 1 },
-            { label: "Purchase vehicle", value: S.ePurchase === "business" ? S.eBusiness : "Held personally", to: 2 },
-            { label: "Entity TIN", value: S.ePurchase === "business" ? (S.eEntityIdentity ? "Verified" : "—") : "N/A", to: 2 },
-            { label: "Category", value: cat ? cat.label : "—", to: 3 },
-            { label: "Quantity", value: S.eQty + (Number(S.eQty) === 1 ? " unit" : " units"), to: 3 }
-          ].map((r) => ({
-            label: r.label, value: r.value,
-            editable: !r.locked, locked: !!r.locked,
-            edit: r.locked ? () => {} : () => { this.setState({ eOpen: r.to }); this.eSay("Editing " + r.label.toLowerCase()); }
-          })),
-          eLockedNote: this.eIdentityDone(),
-          ePendingChecks: [
-            { label: "How you're applying chosen", ok: this.eS1() },
-            { label: "Purchase type chosen", ok: this.eS2() },
-            { label: "Category and quantity chosen", ok: this.eS3() }
-          ].map((c) => ({ label: c.label, icon: c.ok ? "✓" : "", bg: c.ok ? "#2F8557" : "#d5dcd8", color: c.ok ? "#12201a" : "#6b7c73" })),
+          eIdentityRevealed: S.eIdentityRevealed,
+          toggleIdentityReveal: () => this.toggleIdentityReveal(),
+          eIdRevealLabel: S.eIdentityRevealed ? "🙈 Hide" : "👁 Reveal",
+          eReviewRows: (() => {
+            const kycRows = S.eParticipation === "business" ? [
+              { label: "Business / Company", value: S.eEntityIdentity ? S.eEntityIdentity.name : "—", masked: false },
+              { label: "Registered TIN", value: S.eEntityIdentity ? S.eEntityIdentity.idNumber : "—", masked: false },
+              { label: "Verification status", value: S.eEntityIdentity ? "Verified" : "—", masked: false }
+            ] : [
+              { label: "Full name", value: S.eIdentity ? S.eIdentity.name : "—", masked: true },
+              { label: "Contact", value: S.eIdentity ? ((S.eIdentity.phone || "—") + " · " + (S.eIdentity.email || "—")) : "—", masked: true },
+              { label: (S.eIdentity ? S.eIdentity.idType : "BVN") + " / NIN", value: S.eIdentity ? (S.eIdentityRevealed ? S.eIdentity.idNumber : maskIdentityNumber(S.eIdentity.idNumber)) : "—", masked: false }
+            ];
+            return kycRows.concat([
+              { label: "Application stream", value: S.eParticipation === "association" ? (assoc ? assoc.label + " Cohort" : "Association") : S.eParticipation === "business" ? "Business / Company" : "Individual", to: 1 },
+              { label: "Category", value: cat ? cat.label : "—", to: 3 },
+              { label: "Quantity", value: S.eQty + (Number(S.eQty) === 1 ? " unit" : " units"), to: 3 },
+              { label: "Total EOI fee", value: money(EOI_FEE * (Number(S.eQty) || 1)), to: 3 }
+            ]).map((r) => ({
+              label: r.label, value: r.value,
+              editable: r.to !== undefined,
+              blurFilter: r.masked && !S.eIdentityRevealed ? "blur(5px)" : "none",
+              edit: r.to !== undefined ? () => this.eGoStep(r.to) : () => {}
+            }));
+          })(),
+          eBackToStep3: () => this.eGoStep(3),
           eNextSteps: JOURNEY_STAGES.slice(1).map((st, i) => ({ n: String(i + 1), title: st.label, body: st.next(), bg: "#eef1ef", color: "#8b9a92" })),
           eSubmit: () => this.beginPayment(),
           eShowSticky: eMobile && !rec && !S.ePhase,
-          eCtaLabel: this.eAll() ? "Pay " + money(EOI_FEE * (Number(S.eQty) || 1)) + " administrative fee" : "Continue",
-          eCtaBg: this.eAll() ? "#2E7D52" : "#7fa793",
-          eNewApplication: () => this.setState({
-            ePhase: null, eoiRecord: null, portalRecord: null, eParticipation: null, eAssoc: null, eAssocQuery: "", ePurchase: null, eBusiness: "", eCategory: null, eQty: 1, eOpen: 1, eTouched: {},
-            eIdentity: null, kycIdType: "BVN", kycIdNumber: "", kycLookup: null,
-            eEntityIdentity: null, entityTin: "", entityTinLookup: null, eEntityCac: "",
-            eFundingRoute: null, eDepositAmount: "", eDepositError: ""
-          }),
+          eCtaLabel: "Pay " + money(EOI_FEE * (Number(S.eQty) || 1)) + " Admin Fee",
+          eCtaBg: "#2E7D52",
           eGoDashboard: () => this.pubGo({ ePhase: null, publicRoute: "portal", portalStage: "dash", pAuthed: true, portalAuthed: true, pRoute: "dashboard" }),
 
           // ===== Screen 1: payment + record creation =====
-          ePhasePay: S.ePhase === "pay" || S.ePhase === "processing",
+          ePhaseInvoiced: S.ePhase === "invoiced" || S.ePhase === "processing",
           ePhasePaid: S.ePhase === "paid",
           eProcessing: S.ePhase === "processing",
-          ePayChannels: [["transfer", "Bank transfer", "From any Nigerian bank app or USSD"], ["app", "Bank app", "Saved beneficiary"], ["branch", "Bank branch", "Pay at any partner branch counter"]].map((c) => ({
-            label: c[1], sub: c[2],
-            border: S.ePayChannel === c[0] ? "2px solid #2E7D52" : "1px solid #c9d3cd",
-            bg: S.ePayChannel === c[0] ? "#EFF6F1" : "#ffffff",
-            ring: S.ePayChannel === c[0] ? "#2E7D52" : "#c9d3cd",
-            dot: S.ePayChannel === c[0] ? "#2E7D52" : "transparent",
-            go: () => this.setState({ ePayChannel: c[0] })
-          })),
-          ePayBack: () => this.setState({ ePhase: null }),
+          eInvoiceRef: S.eInvoiceRef, eInvoiceVirtual: S.eInvoiceVirtual, eInvoiceDate: "16 Sep 2026",
           eConfirmPayment: () => this.confirmPayment(),
-          ePayLabel: S.ePhase === "processing" ? "Confirming payment…" : "I have paid " + money(EOI_FEE * (Number(S.eQty) || 1)),
-          eInvoice: rec ? rec.invoice : "", eQueueId: rec ? rec.queueId : "",
-          ePaidAt: rec ? rec.paidAt : "", eStream: rec ? rec.stream : "",
-          eChannelPaid: rec ? rec.channel : "",
-          eShopLine: rec ? rec.category + " – " + rec.qty + (rec.qty === 1 ? " Unit" : " Units") : "",
-          eLegalName: rec ? rec.personName : "", eEmailShown: rec ? rec.email : "",
+          ePayLabel: S.ePhase === "processing" ? "Confirming payment…" : "Pay to Trustee Collection Account",
+          eInvoice: rec ? rec.invoice : "",
 
           // ===== Applicant dashboard shell (Dashboard, My EOI, Journey, Payments, Documents, Notifications, Profile, Help) =====
           ...this.portalDerive(S, rec, pr),
@@ -4780,6 +4732,8 @@ class Component extends DCLogic {
           rChannel: pr ? pr.channel : "", rVirtual: pr ? pr.virtual : "", rAmount: pr ? money(pr.amount) : money(EOI_FEE),
           rUnitFee: money(EOI_FEE), rLineQty: pr ? String(pr.qty) : "1",
           rEmail: pr ? pr.email : "", rPhone: pr ? pr.phone : "",
+          rHasIdentity: !!(pr && pr.kycIdentity), rIdentityType: pr && pr.kycIdentity ? pr.kycIdentity.idType : "",
+          rIdentityMasked: pr && pr.kycIdentity ? maskIdentityNumber(pr.kycIdentity.idNumber) : "",
           receiptOn: S.publicRoute === "receipt",
           eoiToastOn: !!S.eoiToast, eoiToastText: S.eoiToast || "",
           pubBackLabel: "Back",
