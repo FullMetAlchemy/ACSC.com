@@ -386,15 +386,17 @@
 </sc-if>
 
 <sc-if value="{{eDesk}}" hint-placeholder-val="{{true}}">
-<div style="width:330px;flex:none;display:flex;flex-direction:column;gap:13px">
-<div style="background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:19px 21px;display:flex;flex-direction:column;gap:13px">
+<div style="width:100%;flex:none;display:flex;flex-wrap:wrap;gap:14px;align-items:stretch">
+<div style="flex:2;min-width:280px;background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:19px 21px;display:flex;flex-direction:column;gap:13px">
 <span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">What happens next?</span>
 <sc-for list="{{eNextSteps}}" as="n" hint-placeholder-count="5"><div style="display:flex;gap:11px;align-items:flex-start"><div style="width:22px;height:22px;flex:none;border-radius:50%;background:{{n.bg}};color:{{n.color}};display:flex;align-items:center;justify-content:center;font:600 11px 'IBM Plex Mono',monospace">{{n.n}}</div><div style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px 'IBM Plex Sans',sans-serif;color:#12201a">{{n.title}}</span><span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#5b6b63">{{n.body}}</span></div></div></sc-for>
 <div style="padding:11px 13px;background:#FDF3E2;border:1px solid #F2DDB0;border-left:3px solid #D9922E;border-radius:8px"><span style="font:500 12.5px/1.55 'IBM Plex Sans',sans-serif;color:#8A5A1E">Submitting an Expression of Interest does not constitute allocation of a unit.</span></div>
 </div>
-<div style="background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:17px 19px;display:flex;flex-direction:column;gap:10px">
-<span style="font:600 14px 'IBM Plex Sans',sans-serif;color:#12201a">Need help?</span>
+<div style="flex:1;min-width:220px;background:#fff;border:1px solid #dfe5e2;border-radius:12px;padding:19px 21px;display:flex;flex-direction:column;justify-content:space-between;gap:13px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 15.5px 'IBM Plex Sans',sans-serif;color:#12201a">Need help?</span>
 <span style="font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:#5b6b63">A field agent can complete this form with you at any registration desk, or call the support line.</span>
+</div>
 <button onClick="{{eHelp}}" style="min-height:44px;border:1px solid #c9d3cd;border-radius:9px;display:flex;align-items:center;justify-content:center;font:500 13.5px 'IBM Plex Sans',sans-serif;color:#3d4b44;background:#fff;cursor:pointer">Talk to support</button>
 </div>
 </div>
@@ -479,7 +481,7 @@
 
 <sc-if value="{{pRouteDashboard}}" hint-placeholder-val="{{true}}">
 <div style="background:#234D3A;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:12px">
-<span style="font:600 19px 'IBM Plex Sans',sans-serif;color:#fff;letter-spacing:-0.01em">Welcome, {{pPerson}}</span>
+<span style="font:600 19px 'IBM Plex Sans',sans-serif;color:#fff;letter-spacing:-0.01em">{{pGreeting}}</span>
 <sc-if value="{{pHasEoi}}" hint-placeholder-val="{{false}}">
 <div style="display:flex;gap:10px;flex-wrap:wrap">
 <div style="flex:1;min-width:190px;display:flex;flex-direction:column;gap:3px;padding:11px 13px;background:rgba(255,255,255,.08);border:1px solid rgba(143,197,168,.32);border-radius:9px"><span style="font:400 10px 'IBM Plex Mono',monospace;color:#8fc5a8;letter-spacing:.08em">REGISTRY QUEUE ID</span><span style="font:600 15px 'IBM Plex Mono',monospace;color:#fff">{{pQueueId}}</span></div>
@@ -4116,7 +4118,15 @@ class Component extends DCLogic {
       pBack: () => { if ((S.pAppHistory || []).length) this.pAppBack(); else this.pNav("dashboard"); },
       pRouteTitle: PROUTES[S.pRoute] ? PROUTES[S.pRoute].title : "Dashboard",
 
-      pPerson: S.pAccount ? (S.pAccount.name || S.pAccount.email) : "",
+      ...(() => {
+        const acc = S.pAccount;
+        const raw = acc ? (acc.firstName || acc.name || acc.fullName || acc.legalName || "").trim() : "";
+        const firstName = raw ? raw.split(/\s+/)[0] : "";
+        return {
+          pFirstName: firstName,
+          pGreeting: firstName ? ("Welcome, " + firstName) : "Welcome to your ACSC Dashboard"
+        };
+      })(),
       pHasEoi: !!rec, pNoEoi: !rec,
       pQueueId: rec ? rec.queueId : "", pInvoice: rec ? rec.invoice : "", pStream: rec ? rec.stream : "",
       pJourneyPreview: pJourney.slice(0, 3),
