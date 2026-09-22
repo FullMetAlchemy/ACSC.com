@@ -3312,7 +3312,7 @@ class Component extends DCLogic {
   beginPayment() {
     if (!this.eAll()) { this.submitEoi(); return; }
     const serial = pad(Math.floor(Math.random() * 900000) + 100000, 6);
-    const invoice = "ACSC-EOI-2026-" + pad(Math.floor(Math.random() * 90000) + 10000, 5);
+    const invoice = "ACSC-EOI-2026-" + pad(Math.floor(Math.random() * 1000000), 6);
     const virtual = "9931 " + serial + " 01";
     this.setState({ ePhase: "invoiced", eInvoiceRef: invoice, eInvoiceVirtual: virtual });
     this.eSay("Invoice " + invoice + " generated");
@@ -3843,7 +3843,7 @@ class Component extends DCLogic {
     const now = new Date();
     const hhmm = pad(now.getHours(), 2) + ":" + pad(now.getMinutes(), 2);
     const amount = EOI_FEE * Number(S.eQty);
-    const invoice = S.eInvoiceRef || ("ACSC-EOI-2026-" + pad(Math.floor(Math.random() * 90000) + 10000, 5));
+    const invoice = S.eInvoiceRef || ("ACSC-EOI-2026-" + pad(Math.floor(Math.random() * 1000000), 6));
     const paidAt = "16 Sep 2026 " + hhmm;
     const channel = "Trustee Account Transfer";
 
